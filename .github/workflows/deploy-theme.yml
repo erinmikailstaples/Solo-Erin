@@ -1,0 +1,37 @@
+name: Deploy Ghost Theme
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+          
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        
+      - name: Build theme assets
+        run: gulp build
+        
+      - name: Create theme package
+        run: yarn zip
+        
+      - name: Deploy to Ghost
+        uses: TryGhost/action-deploy-theme@v1
+        with:
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
+          theme-name: solo
