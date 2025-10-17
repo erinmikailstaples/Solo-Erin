@@ -1,0 +1,45 @@
+<section class="immersive" 
+         data-immersive
+         data-immersive-autoplay="{{@custom.immersive_autoplay}}"
+         data-immersive-interval="{{@custom.immersive_interval_ms}}"
+         style="--immersive-overlay-opacity: {{@custom.immersive_overlay_opacity}}; --immersive-blur-px: {{@custom.immersive_blur_px}}px;">
+    
+    <!-- Slides container -->
+    <div class="immersive__slides">
+        {{#get "posts" limit=@custom.immersive_max_posts as |latest_posts|}}
+            {{#foreach latest_posts}}
+                {{> "immersive/slide"}}
+            {{/foreach}}
+        {{/get}}
+    </div>
+    
+    <!-- Current slide counter -->
+    <div class="immersive__counter immersive__counter--left">
+        <span data-counter-current>01</span>
+    </div>
+    
+    <!-- Total slides counter -->
+    <div class="immersive__counter immersive__counter--right">
+        <span data-counter-total>00</span>
+    </div>
+    
+    <!-- Bottom navigation rail -->
+    {{#get "posts" limit=@custom.immersive_max_posts as |latest_posts|}}
+        <nav class="immersive__rail" role="tablist" aria-label="Slide navigation">
+            {{#foreach latest_posts}}
+                <button class="immersive__item{{#if @first}} is-active{{/if}}" 
+                        data-item="{{@index}}"
+                        role="tab"
+                        aria-selected="{{#if @first}}true{{else}}false{{/if}}"
+                        aria-controls="slide-{{@index}}"
+                        tabindex="{{#if @first}}0{{else}}-1{{/if}}">
+                    {{title}}
+                </button>
+            {{/foreach}}
+        </nav>
+    {{/get}}
+    
+    <!-- Help overlay -->
+    {{> "immersive/help"}}
+    
+</section>

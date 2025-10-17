@@ -1,0 +1,279 @@
+/* Immersive index layout
+/* ---------------------------------------------------------- */
+
+.immersive {
+    position: relative;
+    height: 100svh;
+    overflow: hidden;
+    color: #fff;
+    background: #000;
+    font-family: var(--font-sans);
+}
+
+.immersive__slides {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.immersive__slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(1.05);
+    transition: opacity 600ms cubic-bezier(.2,.6,.2,1), transform 900ms cubic-bezier(.2,.6,.2,1);
+    opacity: 0;
+    transform: scale(1.02);
+    pointer-events: none;
+}
+
+.immersive__slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--immersive-overlay-opacity, 0.25));
+    backdrop-filter: blur(var(--immersive-blur-px, 12px));
+}
+
+.immersive__slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* Fallback gradient for posts without feature images */
+.immersive__slide--fallback {
+    background: linear-gradient(135deg, var(--color-darker-gray, #333) 0%, var(--color-primary-text, #666) 100%);
+}
+
+/* Navigation rail at bottom */
+.immersive__rail {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: clamp(16px, 4vh, 48px);
+    display: grid;
+    grid-auto-flow: column;
+    gap: clamp(24px, 6vw, 48px);
+    align-items: center;
+    justify-content: center;
+    padding-inline: clamp(20px, 6vw, 120px);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    user-select: none;
+    z-index: 10;
+}
+
+.immersive__item {
+    opacity: 0.7;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-block: 10px;
+    cursor: pointer;
+    transition: opacity 200ms ease, border-color 200ms ease;
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 200px;
+}
+
+.immersive__item:hover {
+    opacity: 0.9;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.immersive__item.is-active {
+    opacity: 1;
+    border-color: #fff;
+}
+
+/* Counters */
+.immersive__counter {
+    position: absolute;
+    top: clamp(16px, 4vh, 36px);
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    opacity: 0.85;
+    z-index: 10;
+    letter-spacing: 0.1em;
+}
+
+.immersive__counter--left {
+    left: clamp(20px, 6vw, 80px);
+}
+
+.immersive__counter--right {
+    right: clamp(20px, 6vw, 80px);
+}
+
+/* Help overlay */
+.immersive__help {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 32px;
+    border-radius: 8px;
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.9rem;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    line-height: 1.6;
+}
+
+.immersive.show-help .immersive__help {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.immersive__help h3 {
+    margin: 0 0 16px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.immersive__help ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.immersive__help li {
+    margin: 8px 0;
+}
+
+.immersive__help kbd {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 8px;
+}
+
+/* Loading states and transitions */
+.immersive__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.immersive__slide img.loaded {
+    opacity: 1;
+}
+
+/* Mobile adaptations */
+@media (max-width: 768px) {
+    .immersive__rail {
+        gap: clamp(16px, 4vw, 24px);
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-inline: 16px;
+        justify-content: flex-start;
+    }
+    
+    .immersive__rail::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .immersive__item {
+        max-width: 150px;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+    }
+    
+    .immersive__help {
+        padding: 24px;
+        font-size: 0.8rem;
+        max-width: calc(100vw - 32px);
+    }
+}
+
+@media (max-width: 480px) {
+    .immersive__item {
+        max-width: 120px;
+        padding-block: 8px;
+    }
+    
+    .immersive__counter {
+        font-size: 0.9rem;
+    }
+}
+
+/* Accessibility and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .immersive__slide {
+        transition: opacity 200ms ease;
+    }
+    
+    .immersive__item {
+        transition: opacity 100ms ease, border-color 100ms ease;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.immersive__item:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 4px;
+    opacity: 1;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .immersive__slide::after {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .immersive__item {
+        border-bottom-width: 3px;
+    }
+    
+    .immersive__help {
+        background: rgba(0, 0, 0, 0.95);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Dark mode compatibility */
+:root.has-light-text .immersive__slide--fallback {
+    background: linear-gradient(135deg, var(--color-darker-gray, #fff) 0%, var(--color-primary-text, #f0f0f0) 100%);
+}
+
+:root.has-light-text .immersive__slide::after {
+    background: rgba(255, 255, 255, var(--immersive-overlay-opacity, 0.25));
+}
+
+/* Ensure proper stacking for header */
+.template-immersive .gh-head {
+    position: relative;
+    z-index: 5;
+    background: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.template-immersive .gh-foot {
+    display: none;
+}
+
+/* Hide main content when immersive is active */
+.template-immersive .gh-main {
+    display: none;
+}
+
+.template-immersive .gh-about {
+    display: none;
+}

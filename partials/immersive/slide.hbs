@@ -1,0 +1,14 @@
+<div class="immersive__slide{{#unless feature_image}} immersive__slide--fallback{{/unless}}{{#if @first}} is-active{{/if}}" 
+     data-slide="{{@index}}"
+     {{#if feature_image}}
+     style="background-image: url('{{img_url feature_image size="xxl"}}')"
+     {{/if}}>
+    {{#if feature_image}}
+        <img src="{{img_url feature_image size="s"}}" 
+             alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" 
+             class="sr-only">
+    {{/if}}
+    <a href="{{url}}" class="immersive__slide-link" aria-label="Read {{title}}">
+        <span class="sr-only">{{title}}</span>
+    </a>
+</div>

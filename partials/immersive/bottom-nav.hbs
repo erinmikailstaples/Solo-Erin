@@ -1,0 +1,12 @@
+<nav class="immersive__rail" role="tablist" aria-label="Slide navigation">
+    {{#foreach posts limit=@custom.immersive_max_posts}}
+        <button class="immersive__item{{#if @first}} is-active{{/if}}" 
+                data-item="{{@index}}"
+                role="tab"
+                aria-selected="{{#if @first}}true{{else}}false{{/if}}"
+                aria-controls="slide-{{@index}}"
+                tabindex="{{#if @first}}0{{else}}-1{{/if}}">
+            {{title}}
+        </button>
+    {{/foreach}}
+</nav>
