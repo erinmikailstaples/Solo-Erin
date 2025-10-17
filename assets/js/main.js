@@ -277,19 +277,63 @@ function initParallax() {
     
     // Initialize if we're on an immersive template
     if (document.body.classList.contains('template-immersive')) {
-        const root = document.documentElement;
-        const opts = {
-            autoplay: root.dataset.immersiveAutoplay === 'true',
-            interval: Number(root.dataset.immersiveInterval) || 6000
-        };
+        function setupImmersive() {
+            const immersiveEl = document.querySelector('[data-immersive]');
+            if (!immersiveEl) return;
+            
+            // Apply rail styling based on theme settings
+            const rail = immersiveEl.querySelector('.immersive__rail');
+            if (rail) {
+                const position = rail.dataset.railPosition || 'Bottom center';
+                const size = rail.dataset.railSize || 'Medium';
+                const style = rail.dataset.railStyle || 'Titles only';
+                
+                // Add position class
+                const positionClass = position.toLowerCase().replace(' ', '-');
+                rail.classList.add(`immersive__rail--${positionClass}`);
+                
+                // Add size class
+                const sizeClass = size.toLowerCase();
+                rail.classList.add(`immersive__rail--${sizeClass}`);
+                
+                // Apply style to items
+                const items = rail.querySelectorAll('.immersive__item');
+                items.forEach(item => {
+                    let styleClass = 'titles';
+                    switch(style) {
+                        case 'Numbers only':
+                            styleClass = 'numbers';
+                            item.querySelector('.immersive__item-content').style.display = 'none';
+                            break;
+                        case 'Titles with numbers':
+                            styleClass = 'titles-numbers';
+                            item.setAttribute('data-number', item.dataset.number);
+                            break;
+                        case 'Dots only':
+                            styleClass = 'dots';
+                            item.querySelector('.immersive__item-content').style.display = 'none';
+                            item.querySelector('.immersive__item-number').style.display = 'none';
+                            break;
+                        default:
+                            item.querySelector('.immersive__item-number').style.display = 'none';
+                    }
+                    item.classList.add(`immersive__item--${styleClass}`);
+                });
+            }
+            
+            const opts = {
+                autoplay: immersiveEl.dataset.immersiveAutoplay === 'true',
+                interval: Number(immersiveEl.dataset.immersiveInterval) || 6000
+            };
+            
+            initImmersiveIndex(opts);
+        }
         
         // Wait for DOM to be ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                initImmersiveIndex(opts);
-            });
+            document.addEventListener('DOMContentLoaded', setupImmersive);
         } else {
-            initImmersiveIndex(opts);
+            setupImmersive();
         }
     }
 })();

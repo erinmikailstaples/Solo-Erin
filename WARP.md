@@ -59,12 +59,31 @@ The immersive index feature provides a full-screen slideshow experience for your
 ### Configuration Options
 All settings are available in **Settings → Design → Homepage**:
 
+#### Basic Settings
 - **Use immersive index layout**: Toggle the immersive layout on/off
 - **Immersive: number of slides**: Choose how many recent posts to show (3-10)
 - **Immersive: overlay darkness**: Adjust background overlay opacity (0.1-0.5)
 - **Immersive: background blur (px)**: Set background blur intensity (0-20px)
 - **Immersive: auto-advance slides**: Enable automatic slideshow
 - **Immersive: auto-advance interval (ms)**: Set time between auto-advances (3-10 seconds)
+- **Immersive: show slide counters**: Show/hide the slide counter numbers in corners
+
+#### Navigation Rail Customization
+- **Immersive: navigation rail style**: Choose how navigation items appear
+  - **Titles only**: Show post titles as text links (default)
+  - **Numbers only**: Show numbered circles (1, 2, 3...)
+  - **Titles with numbers**: Show titles with numbered badges
+  - **Dots only**: Show minimal dot indicators
+- **Immersive: navigation rail position**: Control where navigation appears
+  - **Bottom center**: Centered at bottom of screen (default)
+  - **Bottom left**: Left-aligned at bottom
+  - **Bottom right**: Right-aligned at bottom
+  - **Side left**: Vertical list on left side
+  - **Side right**: Vertical list on right side
+- **Immersive: navigation rail size**: Adjust the overall scale
+  - **Small**: Compact sizing
+  - **Medium**: Standard sizing (default)
+  - **Large**: Prominent sizing
 
 ### Navigation & Interaction
 - **Click anywhere**: Advance to next slide

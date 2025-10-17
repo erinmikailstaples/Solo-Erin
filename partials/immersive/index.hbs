@@ -1,7 +1,10 @@
-<section class="immersive" 
+<section class="immersive{{#unless @custom.immersive_show_counters}} immersive--hide-counters{{/unless}}" 
          data-immersive
          data-immersive-autoplay="{{@custom.immersive_autoplay}}"
          data-immersive-interval="{{@custom.immersive_interval_ms}}"
+         data-rail-style="{{@custom.immersive_rail_style}}"
+         data-rail-position="{{@custom.immersive_rail_position}}"
+         data-rail-size="{{@custom.immersive_rail_size}}"
          style="--immersive-overlay-opacity: {{@custom.immersive_overlay_opacity}}; --immersive-blur-px: {{@custom.immersive_blur_px}}px;">
     
     <!-- Slides container -->
@@ -23,17 +26,26 @@
         <span data-counter-total>00</span>
     </div>
     
-    <!-- Bottom navigation rail -->
+    <!-- Dynamic navigation rail -->
     {{#get "posts" limit=@custom.immersive_max_posts as |latest_posts|}}
-        <nav class="immersive__rail" role="tablist" aria-label="Slide navigation">
+        <nav class="immersive__rail" 
+             data-rail-position="{{@custom.immersive_rail_position}}"
+             data-rail-size="{{@custom.immersive_rail_size}}"
+             data-rail-style="{{@custom.immersive_rail_style}}"
+             role="tablist" 
+             aria-label="Slide navigation">
             {{#foreach latest_posts}}
                 <button class="immersive__item{{#if @first}} is-active{{/if}}" 
                         data-item="{{@index}}"
+                        data-number="{{@number}}"
+                        data-title="{{title}}"
                         role="tab"
                         aria-selected="{{#if @first}}true{{else}}false{{/if}}"
                         aria-controls="slide-{{@index}}"
+                        aria-label="Go to slide {{@number}}: {{title}}"
                         tabindex="{{#if @first}}0{{else}}-1{{/if}}">
-                    {{title}}
+                    <span class="immersive__item-content">{{title}}</span>
+                    <span class="immersive__item-number">{{@number}}</span>
                 </button>
             {{/foreach}}
         </nav>

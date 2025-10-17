@@ -120,6 +120,33 @@
                 "default": "6000",
                 "label": "Immersive: auto-advance interval (ms)",
                 "group": "homepage"
+            },
+            "immersive_rail_style": {
+                "type": "select",
+                "options": ["Titles only", "Numbers only", "Titles with numbers", "Dots only"],
+                "default": "Titles only",
+                "label": "Immersive: navigation rail style",
+                "group": "homepage"
+            },
+            "immersive_rail_position": {
+                "type": "select",
+                "options": ["Bottom center", "Bottom left", "Bottom right", "Side left", "Side right"],
+                "default": "Bottom center",
+                "label": "Immersive: navigation rail position",
+                "group": "homepage"
+            },
+            "immersive_rail_size": {
+                "type": "select",
+                "options": ["Small", "Medium", "Large"],
+                "default": "Medium",
+                "label": "Immersive: navigation rail size",
+                "group": "homepage"
+            },
+            "immersive_show_counters": {
+                "type": "boolean",
+                "default": true,
+                "label": "Immersive: show slide counters",
+                "group": "homepage"
             }
         }
     },
