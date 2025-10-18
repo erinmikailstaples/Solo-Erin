@@ -5,10 +5,6 @@
 }
 
 .resume {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2.5rem 3rem;
-  background: white;
   font-size: 18px;
 }
 
@@ -17,14 +13,33 @@
 }
 
 .resume-page .resume-wrap {
-  grid-column: 1 / -1 !important;
+  grid-column: 4 / span 6 !important;
+}
+
+@media (max-width: 991px) {
+  .resume-page .resume-wrap {
+    grid-column: 3 / span 8 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .resume-page .resume-wrap {
+    grid-column: 2 / span 10 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-page .resume-wrap {
+    grid-column: 1 / span 12 !important;
+  }
 }
 
 /* Header section */
 .resume-header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #ddd;
+  text-align: left;
 }
 
 .resume-name {
@@ -55,7 +70,7 @@
 
 /* Contact information */
 .resume-contact {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
 .resume-contact a {
@@ -213,27 +228,17 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .resume {
-    padding: 2rem 1.5rem;
-  }
-  
   .resume-name {
-    font-size: 1.85rem;
+    font-size: 2.2rem !important;
   }
   
   .resume-section > h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem !important;
   }
   
   .resume-nav a {
     display: block;
     margin: 0.35rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .resume {
-    padding: 1.5rem 1rem;
   }
 }
 
