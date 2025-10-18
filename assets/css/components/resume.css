@@ -1,314 +1,237 @@
-/* Resume layout - prioritize readability and spacing */
+/* Simple, clean resume layout */
 .resume-page {
-  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .resume {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 3rem 2rem;
-  font-size: 16px;
+  padding: 2rem 1.5rem;
+  background: white;
 }
 
-/* Override Ghost's tight spacing */
 .resume-page .gh-content {
   max-width: none;
 }
 
 .resume-page .resume-wrap {
   grid-column: 1 / -1 !important;
-  max-width: none;
-  padding: 0;
 }
 
-/* Header with better spacing */
+/* Header section */
 .resume-header {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid #e5e5e5;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
 }
 
 .resume-name {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  line-height: 1.2;
   margin: 0 0 0.5rem 0;
-  color: #1a1a1a;
+  color: #333;
 }
 
 .resume-pronouns {
   font-weight: 400;
   color: #666;
-  font-size: 0.9em;
 }
 
 .resume-title {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin: 0.5rem 0;
-  color: #2c5aa0;
+  color: #0066cc;
 }
 
 .resume-location {
-  font-size: 1.1rem;
-  margin: 0.25rem 0 1.5rem 0;
+  font-size: 1rem;
+  margin: 0.5rem 0;
   color: #666;
 }
 
-/* Contact links with better spacing */
+/* Contact information */
 .resume-contact {
-  margin: 1rem 0 2rem 0;
+  margin: 1rem 0;
 }
 
 .resume-contact a {
   display: block;
-  margin: 0.5rem 0;
-  color: #2c5aa0;
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 0.25rem 0;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom-color 0.2s ease;
+  margin: 0.25rem 0;
+  color: #0066cc;
+  text-decoration: underline;
+  font-size: 0.95rem;
 }
 
 .resume-contact a:hover {
-  border-bottom-color: #2c5aa0;
+  color: #004499;
 }
 
-/* Navigation with better spacing */
+/* Navigation */
 .resume-nav {
-  margin: 2rem 0 3rem 0;
-  padding: 1.5rem 0 0 0;
-  border-top: 1px solid #e5e5e5;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .resume-nav a {
   display: inline-block;
-  margin: 0 1.5rem 0.5rem 0;
-  color: #2c5aa0;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 0.25rem 0;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom-color 0.2s ease;
+  margin: 0 1rem 0.5rem 0;
+  color: #0066cc;
+  text-decoration: underline;
+  font-size: 0.9rem;
 }
 
 .resume-nav a:hover {
-  border-bottom-color: #2c5aa0;
+  color: #004499;
 }
 
-/* Sections with generous spacing */
+/* Sections */
 .resume-section {
-  margin: 3rem 0;
-  padding: 2rem 0 0 0;
-  border-top: 2px solid #e5e5e5;
+  margin: 2rem 0;
 }
 
 .resume-section:first-of-type {
-  border-top: 0;
   margin-top: 0;
-  padding-top: 0;
 }
 
 .resume-section > h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 0 0 1.5rem 0;
-  color: #1a1a1a;
-  letter-spacing: -0.01em;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: #333;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 0.5rem;
 }
 
 .resume-section p {
-  margin: 1rem 0;
-  line-height: 1.7;
-  font-size: 1rem;
+  margin: 0.75rem 0;
+  line-height: 1.5;
+  color: #333;
 }
 
-/* Skills section with better list formatting */
+/* Skills */
 #skills ul {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   padding-left: 1.5rem;
   columns: 1;
-  column-gap: 3rem;
+  column-gap: 2rem;
 }
 
 #skills li {
-  margin: 0.75rem 0;
+  margin: 0.5rem 0;
   break-inside: avoid;
-  line-height: 1.6;
-  font-size: 1rem;
+  line-height: 1.4;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) {
   #skills ul { 
     columns: 2; 
   }
 }
 
-/* Experience section with clear role separation */
+/* Experience */
 .resume-experience .resume-role {
-  margin: 2.5rem 0;
-  padding: 1.5rem 0 0 0;
-  border-top: 1px solid #e5e5e5;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
 }
 
 .resume-experience .resume-role:first-child {
   border-top: 0;
-  margin-top: 0;
   padding-top: 0;
 }
 
 .resume-experience h3 {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin: 0 0 0.5rem 0;
-  color: #1a1a1a;
-  line-height: 1.3;
+  margin: 0 0 0.25rem 0;
+  color: #333;
 }
 
 .resume-experience .meta {
   color: #666;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .resume-experience ul {
-  margin: 1rem 0 0 0;
+  margin: 0.5rem 0;
   padding-left: 1.5rem;
 }
 
 .resume-experience li {
-  margin: 0.75rem 0;
-  line-height: 1.6;
-  font-size: 1rem;
+  margin: 0.5rem 0;
+  line-height: 1.4;
 }
 
-/* Role headers for consistent styling */
+/* Role headers */
 .role-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: .25rem 1rem;
-  align-items: baseline;
-  margin-bottom: .5rem;
-}
-.role-company {
-  margin: 0;
-  font-weight: 600;
-}
-.role-location {
-  font-weight: 400;
-  color: var(--resume-muted);
-  margin-left: .25rem;
-  font-size: .95em;
-}
-.role-title-dates {
-  display: flex;
-  gap: .75rem;
-  justify-self: end;
-  font-size: .95rem;
-  color: var(--resume-muted);
+  margin-bottom: 0.5rem;
 }
 
-/* Typography tighteners */
-.resume p {
-  margin: .5rem 0 0;
-}
-.resume li + li {
-  margin-top: .25rem;
-}
-
-/* Two-column lists for certifications and awards */
+/* Two-column lists */
 .resume-list.two-col {
   columns: 1;
   column-gap: 2rem;
-  margin: 0;
-  padding-left: 1.2rem;
-}
-@media (min-width: 880px) {
-  .resume-list.two-col { columns: 2; }
+  margin: 1rem 0;
+  padding-left: 1.5rem;
 }
 
-/* Item dates styling */
+@media (min-width: 768px) {
+  .resume-list.two-col { 
+    columns: 2; 
+  }
+}
+
+/* Item dates */
 .item-dates {
-  color: var(--resume-muted);
-  margin-left: .35rem;
-  font-size: .95em;
+  color: #666;
+  font-size: 0.9em;
 }
 
-/* Role note styling */
+/* Role notes */
 .role-note {
-  color: var(--resume-muted);
+  color: #666;
   font-style: italic;
+  margin: 1rem 0;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 900px) {
-  .resume {
-    padding: 2rem 1.5rem;
-  }
-  
-  #skills ul {
-    columns: 1;
-  }
-}
-
-@media (max-width: 640px) {
+/* Mobile */
+@media (max-width: 768px) {
   .resume {
     padding: 1.5rem 1rem;
   }
   
   .resume-name {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   
-  .resume-title {
-    font-size: 1.2rem;
-  }
-  
-  .resume-section > h2 {
-    font-size: 1.5rem;
-  }
-  
-  .role-header {
-    grid-template-columns: 1fr;
-  }
-  
-  .role-title-dates {
-    justify-self: start;
-    gap: 0.5rem;
-  }
-}
-
-/* Override any problematic grid layouts */
-.resume-page .gh-canvas > * {
-  grid-column: 4 / span 6;
-}
-
-@media (max-width: 991px) {
-  .resume-page .gh-canvas > * {
-    grid-column: 3 / span 8;
-  }
-}
-
-@media (max-width: 767px) {
-  .resume-page .gh-canvas > * {
-    grid-column: 2 / span 10;
-  }
-}
-
-@media (max-width: 480px) {
-  .resume-page .gh-canvas > * {
-    grid-column: 1 / span 12;
+  .resume-nav a {
+    display: block;
+    margin: 0.25rem 0;
   }
 }
 
 /* Print styles */
 @media print {
-  .site-header, .site-footer, .resume-jump, .post-actions, .subscribe, .floating-subscribe, .gh-foot { display: none !important; }
-  .resume-page .resume-wrap { max-width: none; padding: 0; }
-  .resume { padding-inline: 0; }
-  a { color: #000; text-decoration: none; }
-  a::after { content: " (" attr(href) ")"; font-size: 0.9em; }
+  .site-header, .site-footer, .resume-nav, .post-actions, .subscribe, .floating-subscribe, .gh-foot { 
+    display: none !important; 
+  }
+  
+  .resume {
+    padding: 1rem;
+    max-width: none;
+  }
+  
+  .resume-section {
+    break-inside: avoid;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: none;
+  }
 }
