@@ -1,10 +1,15 @@
 {{!< default}}
 
+{{!-- Override any default page content rendering --}}
+<style>
+.gh-content .gh-canvas > *:not(.resume-wrap) { display: none !important; }
+</style>
+
 <main class="gh-main gh-outer">
     <div class="gh-inner">
         <article class="gh-article post resume-page">
             <header class="gh-article-header">
-                <h1 class="gh-article-title">Resume</h1>
+                <h1 class="gh-article-title">{{title}}</h1>
             </header>
 
             <section class="gh-content gh-canvas">
