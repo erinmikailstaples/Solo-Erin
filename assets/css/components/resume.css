@@ -1,54 +1,230 @@
-/* Resume page styles for Solo theme */
+/* Resume layout + typography improvements */
+.resume {
+  --resume-max: 1040px;
+  --resume-gap: 1rem;
+  --resume-gap-lg: 2rem;
+  --resume-border: var(--color-border, rgba(0,0,0,0.12));
+  --resume-muted: var(--color-muted, rgba(0,0,0,0.6));
+  --resume-accent: var(--ghost-accent-color, #ff3cab);
+  max-width: var(--resume-max);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
 
+/* Header */
+.resume-header {
+  margin-block: 1.25rem 1.75rem;
+}
+.resume-name {
+  line-height: 1.15;
+  margin: 0;
+  font-size: clamp(28px, 4vw, 40px);
+}
+.resume-pronouns {
+  font-weight: 400;
+  color: var(--resume-muted);
+  font-size: .875em;
+}
+.resume-title {
+  margin: .25rem 0 0;
+  font-weight: 600;
+  letter-spacing: .005em;
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: var(--color-mid, rgba(0,0,0,.75));
+}
+.resume-location {
+  margin: .25rem 0 0;
+  color: var(--resume-muted);
+}
+
+/* Contact links as a responsive grid */
+.resume-contact {
+  margin-top: .75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: .5rem 1rem;
+  align-items: center;
+}
+.resume-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .35rem .65rem;
+  border-radius: .4rem;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(0,0,0,0.04);
+  font-size: .95rem;
+  transition: background-color 0.2s ease;
+}
+.resume-contact a:hover,
+.resume-contact a:focus-visible {
+  outline: none;
+  background: rgba(255, 60, 171, 0.1);
+}
+
+/* Jump list */
+.resume-nav {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .75rem;
+  border-top: 1px solid var(--resume-border);
+  padding-top: .75rem;
+  font-size: .95rem;
+}
+.resume-nav a {
+  padding: .35rem .75rem;
+  border: 1px solid var(--resume-border);
+  border-radius: 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+.resume-nav a:hover,
+.resume-nav a:focus-visible {
+  border-color: rgba(255, 60, 171, 0.4);
+  background: rgba(255, 60, 171, 0.1);
+}
+
+/* Sections */
+.resume-section {
+  padding-block: var(--resume-gap-lg);
+  border-top: 1px solid var(--resume-border);
+}
+.resume-section:first-of-type {
+  border-top: 0;
+}
+.resume-section > h2 {
+  margin: 0 0 .75rem;
+  letter-spacing: .01em;
+  font-size: clamp(20px, 2.8vw, 26px);
+}
+
+/* Key skills: two-column on desktop */
+#skills ul {
+  margin: .25rem 0 0;
+  columns: 1;
+  column-gap: 2rem;
+  padding-left: 1.2rem;
+}
+#skills li {
+  break-inside: avoid;
+  margin: .35rem 0;
+}
+@media (min-width: 880px) {
+  #skills ul { columns: 2; }
+}
+
+/* Experience: card-like separation between roles */
+.resume-experience .resume-role {
+  padding-block: 1rem;
+  border-top: 1px dashed var(--resume-border);
+}
+.resume-experience .resume-role:first-child {
+  border-top: 0;
+}
+.resume-experience h3 {
+  margin: 0 0 .25rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+.resume-experience .meta {
+  color: var(--resume-muted);
+  margin-bottom: .5rem;
+  font-size: .975rem;
+}
+.resume-experience ul {
+  margin: .5rem 0 0;
+  padding-left: 1.2rem;
+}
+.resume-experience li {
+  margin: .35rem 0;
+}
+
+/* Role headers for consistent styling */
+.role-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .25rem 1rem;
+  align-items: baseline;
+  margin-bottom: .5rem;
+}
+.role-company {
+  margin: 0;
+  font-weight: 600;
+}
+.role-location {
+  font-weight: 400;
+  color: var(--resume-muted);
+  margin-left: .25rem;
+  font-size: .95em;
+}
+.role-title-dates {
+  display: flex;
+  gap: .75rem;
+  justify-self: end;
+  font-size: .95rem;
+  color: var(--resume-muted);
+}
+
+/* Typography tighteners */
+.resume p {
+  margin: .5rem 0 0;
+}
+.resume li + li {
+  margin-top: .25rem;
+}
+
+/* Two-column lists for certifications and awards */
+.resume-list.two-col {
+  columns: 1;
+  column-gap: 2rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+@media (min-width: 880px) {
+  .resume-list.two-col { columns: 2; }
+}
+
+/* Item dates styling */
+.item-dates {
+  color: var(--resume-muted);
+  margin-left: .35rem;
+  font-size: .95em;
+}
+
+/* Role note styling */
+.role-note {
+  color: var(--resume-muted);
+  font-style: italic;
+}
+
+/* Mobile tweaks */
+@media (max-width: 860px) {
+  #skills ul { columns: 1; }
+  .resume-contact { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .role-header { grid-template-columns: 1fr; }
+  .role-title-dates { justify-self: start; gap: .5rem; }
+}
+@media (max-width: 520px) {
+  .resume-header { margin-block: .75rem 1rem; }
+  .resume-contact { grid-template-columns: 1fr; }
+  .resume-nav { gap: .35rem .5rem; }
+}
+
+/* Maintain backward compatibility with existing classes */
 .resume-page .resume-wrap {
   grid-column: 1 / -1 !important;
-  max-width: 1100px;
-  margin-inline: auto;
-  padding-inline: clamp(16px, 4vw, 32px);
 }
 
-.resume-page .resume-header { margin-bottom: 1.5rem; }
-.resume-page .resume-name { font-size: clamp(28px, 4vw, 40px); line-height: 1.2; }
-.resume-page .resume-pronouns { font-weight: 400; font-size: .875em; color: var(--color-mid, rgba(0,0,0,.6)); }
-.resume-page .resume-headline { margin-top: .25rem; font-size: clamp(16px, 2.2vw, 20px); color: var(--color-mid, rgba(0,0,0,.75)); }
-.resume-page .resume-location { margin-top: .25rem; color: var(--color-mid, rgba(0,0,0,.6)); }
-
-.resume-page .resume-contacts {
-  display: flex; flex-wrap: wrap; gap: .5rem 1rem; list-style: none; padding: 0; margin: .75rem 0 0;
-}
-.resume-page .resume-contacts a { text-decoration: underline; text-underline-offset: 2px; }
-
-.resume-page .resume-jump {
-  display: flex; flex-wrap: wrap; gap: .5rem .75rem; align-items: baseline;
-  padding: .75rem 0 1rem; border-top: 1px solid var(--color-border, rgba(0,0,0,.08));
-  border-bottom: 1px solid var(--color-border, rgba(0,0,0,.08)); margin-bottom: 2rem; font-size: .95rem;
-}
-.resume-page .resume-jump span { color: var(--color-mid, rgba(0,0,0,.6)); margin-right: .25rem; }
-.resume-page .resume-jump a { color: inherit; opacity: .85; }
-
-.resume-page .resume-section + .resume-section { margin-top: 2.25rem; }
-.resume-page .section-title { font-size: clamp(20px, 2.8vw, 26px); margin-bottom: .75rem; }
-
-.resume-page .resume-list { margin: 0; padding-left: 1.2rem; }
-.resume-page .resume-list.two-col { columns: 1; column-gap: 2rem; }
-@media (min-width: 880px) { .resume-page .resume-list.two-col { columns: 2; } }
-
-.resume-page .role { padding: 1rem 0; border-top: 1px solid var(--color-border, rgba(0,0,0,.08)); }
-.resume-page .role:first-of-type { border-top: none; }
-.resume-page .role-header { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; align-items: baseline; margin-bottom: .5rem; }
-.resume-page .role-company { margin: 0; font-weight: 600; }
-.resume-page .role-location { font-weight: 400; color: var(--color-mid, rgba(0,0,0,.6)); margin-left: .25rem; font-size: .95em; }
-.resume-page .role-title-dates { display: flex; gap: .75rem; justify-self: end; font-size: .95rem; color: var(--color-mid, rgba(0,0,0,.7)); }
-@media (max-width: 640px) {
-  .resume-page .role-header { grid-template-columns: 1fr; }
-  .resume-page .role-title-dates { justify-self: start; gap: .5rem; }
-}
-.resume-page .item-dates { color: var(--color-mid, rgba(0,0,0,.6)); margin-left: .35rem; font-size: .95em; }
-.resume-page .role-note { color: var(--color-mid, rgba(0,0,0,.6)); font-style: italic; }
-
+/* Print styles */
 @media print {
   .site-header, .site-footer, .resume-jump, .post-actions, .subscribe, .floating-subscribe, .gh-foot { display: none !important; }
   .resume-page .resume-wrap { max-width: none; padding: 0; }
+  .resume { padding-inline: 0; }
   a { color: #000; text-decoration: none; }
   a::after { content: " (" attr(href) ")"; font-size: 0.9em; }
 }
