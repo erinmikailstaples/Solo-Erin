@@ -1,18 +1,15 @@
 {{!< default}}
 
-{{!-- Override any default page content rendering --}}
-<style>
-.gh-content .gh-canvas > *:not(.resume-wrap) { display: none !important; }
-</style>
+{{#contentFor "body_class"}}resume-page{{/contentFor}}
 
-<main class="gh-main gh-outer">
+<main class="gh-main">
     <div class="gh-inner">
         <article class="gh-article post resume-page">
             <header class="gh-article-header">
                 <h1 class="gh-article-title">{{title}}</h1>
             </header>
 
-            <section class="gh-content gh-canvas">
+            <div class="gh-content">
                 <div class="resume-wrap">
                     <header class="resume-header">
                         <h2 class="resume-name">Erin Mikail Staples <span class="resume-pronouns">(she/her/hers)</span></h2>
@@ -219,7 +216,7 @@
                     </section>
 
                 </div>
-            </section>
+            </div>
         </article>
     </div>
 </main>
