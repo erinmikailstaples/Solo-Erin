@@ -1,14 +1,25 @@
 /* Resume layout + typography improvements */
 .resume {
-  --resume-max: 1040px;
+  --resume-max: 800px;
   --resume-gap: 1rem;
   --resume-gap-lg: 2rem;
   --resume-border: var(--color-border, rgba(0,0,0,0.12));
   --resume-muted: var(--color-muted, rgba(0,0,0,0.6));
   --resume-accent: var(--ghost-accent-color, #ff3cab);
   max-width: var(--resume-max);
-  margin-inline: auto;
-  padding-inline: 1.25rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Ensure the resume respects Ghost's grid system */
+.resume-page .resume-wrap {
+  grid-column: 1 / -1 !important;
+  max-width: none;
+  padding: 0;
+}
+
+.resume-page .gh-content {
+  max-width: 100%;
 }
 
 /* Header */
@@ -37,30 +48,26 @@
   color: var(--resume-muted);
 }
 
-/* Contact links as a responsive grid */
+/* Contact links as a simple vertical list */
 .resume-contact {
   margin-top: .75rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: .5rem 1rem;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 .resume-contact a {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  padding: .35rem .65rem;
-  border-radius: .4rem;
-  text-decoration: none;
-  color: inherit;
-  background: rgba(0,0,0,0.04);
+  display: inline-block;
+  width: fit-content;
+  padding: .25rem 0;
+  color: #e85bad;
+  text-decoration: underline;
+  text-underline-offset: 2px;
   font-size: .95rem;
-  transition: background-color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 .resume-contact a:hover,
 .resume-contact a:focus-visible {
-  outline: none;
-  background: rgba(255, 60, 171, 0.1);
+  opacity: 0.8;
 }
 
 /* Jump list */
@@ -68,23 +75,21 @@
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem .75rem;
+  gap: .5rem 1.5rem;
   border-top: 1px solid var(--resume-border);
   padding-top: .75rem;
-  font-size: .95rem;
+  font-size: .9rem;
 }
 .resume-nav a {
-  padding: .35rem .75rem;
-  border: 1px solid var(--resume-border);
-  border-radius: 20px;
-  text-decoration: none;
   color: inherit;
-  transition: all 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
 }
 .resume-nav a:hover,
 .resume-nav a:focus-visible {
-  border-color: rgba(255, 60, 171, 0.4);
-  background: rgba(255, 60, 171, 0.1);
+  opacity: 1;
 }
 
 /* Sections */
@@ -203,21 +208,39 @@
 /* Mobile tweaks */
 @media (max-width: 860px) {
   #skills ul { columns: 1; }
-  .resume-contact { grid-template-columns: 1fr 1fr; }
+  .resume { padding: 0 1.5rem; }
 }
 @media (max-width: 640px) {
   .role-header { grid-template-columns: 1fr; }
   .role-title-dates { justify-self: start; gap: .5rem; }
+  .resume { padding: 0 1rem; }
 }
 @media (max-width: 520px) {
   .resume-header { margin-block: .75rem 1rem; }
-  .resume-contact { grid-template-columns: 1fr; }
-  .resume-nav { gap: .35rem .5rem; }
+  .resume-nav { gap: .35rem 1rem; }
 }
 
-/* Maintain backward compatibility with existing classes */
-.resume-page .resume-wrap {
-  grid-column: 1 / -1 !important;
+/* Override any problematic grid layouts */
+.resume-page .gh-canvas > * {
+  grid-column: 4 / span 6;
+}
+
+@media (max-width: 991px) {
+  .resume-page .gh-canvas > * {
+    grid-column: 3 / span 8;
+  }
+}
+
+@media (max-width: 767px) {
+  .resume-page .gh-canvas > * {
+    grid-column: 2 / span 10;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-page .gh-canvas > * {
+    grid-column: 1 / span 12;
+  }
 }
 
 /* Print styles */
