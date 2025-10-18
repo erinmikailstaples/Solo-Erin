@@ -6,6 +6,9 @@
 
 .resume {
   font-size: 18px;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .resume-page .gh-content {
@@ -13,25 +16,10 @@
 }
 
 .resume-page .resume-wrap {
-  grid-column: 4 / span 6 !important;
-}
-
-@media (max-width: 991px) {
-  .resume-page .resume-wrap {
-    grid-column: 3 / span 8 !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .resume-page .resume-wrap {
-    grid-column: 2 / span 10 !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .resume-page .resume-wrap {
-    grid-column: 1 / span 12 !important;
-  }
+  grid-column: 1 / -1 !important;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 /* Header section */
@@ -228,6 +216,14 @@
 
 /* Mobile */
 @media (max-width: 768px) {
+  .resume-page .resume-wrap {
+    padding: 0 1.5rem;
+  }
+  
+  .resume {
+    padding: 1.5rem;
+  }
+  
   .resume-name {
     font-size: 2.2rem !important;
   }
@@ -239,6 +235,16 @@
   .resume-nav a {
     display: block;
     margin: 0.35rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-page .resume-wrap {
+    padding: 0 1rem;
+  }
+  
+  .resume {
+    padding: 1rem;
   }
 }
 
