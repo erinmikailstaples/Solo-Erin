@@ -1,7 +1,7 @@
 {
     "name": "solo-erin",
     "description": "A Ghost theme",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "private": true,
     "engines": {
         "ghost": ">=5.0.0"
@@ -48,12 +48,20 @@
             },
             "navigation_layout": {
                 "type": "select",
-                "options": ["Logo on the left", "Logo in the middle", "Stacked"],
+                "options": [
+                    "Logo on the left",
+                    "Logo in the middle",
+                    "Stacked"
+                ],
                 "default": "Logo on the left"
             },
             "typography": {
                 "type": "select",
-                "options": ["Modern sans-serif", "Elegant serif", "Consistent mono"],
+                "options": [
+                    "Modern sans-serif",
+                    "Elegant serif",
+                    "Consistent mono"
+                ],
                 "default": "Modern sans-serif"
             },
             "footer_text": {
@@ -61,7 +69,11 @@
             },
             "header_section_layout": {
                 "type": "select",
-                "options": ["Side by side", "Large background", "Typographic profile"],
+                "options": [
+                    "Side by side",
+                    "Large background",
+                    "Typographic profile"
+                ],
                 "default": "Large background",
                 "group": "homepage"
             },
@@ -77,7 +89,11 @@
             },
             "post_feed_layout": {
                 "type": "select",
-                "options": ["Classic", "Typographic", "Parallax"],
+                "options": [
+                    "Classic",
+                    "Typographic",
+                    "Parallax"
+                ],
                 "default": "Classic",
                 "group": "homepage"
             },
@@ -89,21 +105,43 @@
             },
             "immersive_max_posts": {
                 "type": "select",
-                "options": ["3", "4", "5", "6", "8", "10"],
+                "options": [
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "8",
+                    "10"
+                ],
                 "default": "6",
                 "label": "Immersive: number of slides",
                 "group": "homepage"
             },
             "immersive_overlay_opacity": {
                 "type": "select",
-                "options": ["0.1", "0.15", "0.2", "0.25", "0.3", "0.4", "0.5"],
+                "options": [
+                    "0.1",
+                    "0.15",
+                    "0.2",
+                    "0.25",
+                    "0.3",
+                    "0.4",
+                    "0.5"
+                ],
                 "default": "0.25",
                 "label": "Immersive: overlay darkness",
                 "group": "homepage"
             },
             "immersive_blur_px": {
                 "type": "select",
-                "options": ["0", "4", "8", "12", "16", "20"],
+                "options": [
+                    "0",
+                    "4",
+                    "8",
+                    "12",
+                    "16",
+                    "20"
+                ],
                 "default": "12",
                 "label": "Immersive: background blur (px)",
                 "group": "homepage"
@@ -116,28 +154,50 @@
             },
             "immersive_interval_ms": {
                 "type": "select",
-                "options": ["3000", "4000", "5000", "6000", "8000", "10000"],
+                "options": [
+                    "3000",
+                    "4000",
+                    "5000",
+                    "6000",
+                    "8000",
+                    "10000"
+                ],
                 "default": "6000",
                 "label": "Immersive: auto-advance interval (ms)",
                 "group": "homepage"
             },
             "immersive_rail_style": {
                 "type": "select",
-                "options": ["Titles only", "Numbers only", "Titles with numbers", "Dots only"],
+                "options": [
+                    "Titles only",
+                    "Numbers only",
+                    "Titles with numbers",
+                    "Dots only"
+                ],
                 "default": "Titles only",
                 "label": "Immersive: navigation rail style",
                 "group": "homepage"
             },
             "immersive_rail_position": {
                 "type": "select",
-                "options": ["Bottom center", "Bottom left", "Bottom right", "Side left", "Side right"],
+                "options": [
+                    "Bottom center",
+                    "Bottom left",
+                    "Bottom right",
+                    "Side left",
+                    "Side right"
+                ],
                 "default": "Bottom center",
                 "label": "Immersive: navigation rail position",
                 "group": "homepage"
             },
             "immersive_rail_size": {
                 "type": "select",
-                "options": ["Small", "Medium", "Large"],
+                "options": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ],
                 "default": "Medium",
                 "label": "Immersive: navigation rail size",
                 "group": "homepage"
