@@ -868,6 +868,49 @@ hr {
     font-family: var(--gh-font-heading, var(--font-mono));
 }
 
+/* Toggle elements alignment fixes */
+[data-toggle-comments],
+.toggle-button,
+.gh-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    vertical-align: middle;
+}
+
+/* Ensure toggles are properly contained within their parent */
+.gh-comments [data-toggle-comments],
+.gh-content [data-toggle-comments] {
+    grid-column: 4 / span 6;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 991px) {
+    .gh-comments [data-toggle-comments],
+    .gh-content [data-toggle-comments] {
+        grid-column: 3 / span 8;
+    }
+}
+
+@media (max-width: 767px) {
+    .gh-comments [data-toggle-comments],
+    .gh-content [data-toggle-comments] {
+        grid-column: 2 / span 10;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-comments [data-toggle-comments],
+    .gh-content [data-toggle-comments] {
+        grid-column: 1 / span 12;
+    }
+}
+
 /* Subscribe
 /* ---------------------------------------------------------- */
 

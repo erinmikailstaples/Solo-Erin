@@ -114,6 +114,18 @@ function initParallax() {
             const elementsToHide = clone.querySelectorAll('.resume-nav, .gh-head, .gh-foot, .resume-pdf-button');
             elementsToHide.forEach(el => el.style.display = 'none');
             
+            // Expand all details elements for PDF
+            const detailsElements = clone.querySelectorAll('details');
+            detailsElements.forEach(details => {
+                details.open = true;
+                // Also hide the summary arrows in PDF
+                const summary = details.querySelector('summary');
+                if (summary) {
+                    summary.style.listStyle = 'none';
+                    summary.style.position = 'relative';
+                }
+            });
+            
             // Get the actual dimensions of the content
             const contentRect = element.getBoundingClientRect();
             const contentHeight = element.scrollHeight;

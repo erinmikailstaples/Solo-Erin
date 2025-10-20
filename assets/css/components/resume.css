@@ -527,3 +527,34 @@
   columns: 2;
   column-gap: 1.5rem;
 }
+
+/* PDF-specific details styling */
+.pdf-content details {
+  margin: 1rem 0;
+  border: none;
+  padding: 0;
+}
+
+.pdf-content summary {
+  font-size: 1.3rem !important;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  cursor: default;
+  list-style: none;
+}
+
+.pdf-content summary::before {
+  display: none !important;
+}
+
+.pdf-content .job-summary {
+  font-size: 1rem !important;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pdf-content .job-details {
+  margin-top: 0.5rem;
+}
