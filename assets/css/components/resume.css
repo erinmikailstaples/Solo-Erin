@@ -1,11 +1,11 @@
 /* Simple, clean resume layout */
 .resume-page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 18px !important;
+  font-size: 16px !important;
 }
 
 .resume {
-  font-size: 18px;
+  font-size: 16px;
   padding: 2rem;
   max-width: 850px;
   margin: 0 auto;
@@ -157,6 +157,58 @@
 .resume-experience .resume-role:first-child {
   border-top: 0;
   padding-top: 0;
+}
+
+/* Job details collapsible styling */
+.resume-experience details {
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+}
+
+.resume-experience details:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.resume-experience summary {
+  cursor: pointer;
+  font-size: 1.6rem !important;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  list-style: none;
+  position: relative;
+}
+
+.resume-experience summary::-webkit-details-marker {
+  display: none;
+}
+
+.resume-experience summary::before {
+  content: '▶';
+  position: absolute;
+  left: -1.5rem;
+  color: #0066cc;
+  font-size: 0.8em;
+  transition: transform 0.2s ease;
+}
+
+.resume-experience details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.resume-experience .job-summary {
+  font-size: 1.2rem !important;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+.resume-experience .job-details {
+  margin-top: 1rem;
+  padding-left: 0;
 }
 
 .resume-experience h3 {
