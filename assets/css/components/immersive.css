@@ -405,7 +405,7 @@
     top: max(24px, env(safe-area-inset-top));
     left: 50%;
     transform: translateX(-50%);
-    z-index: 16; /* above slides (1) and rail (10) but below help overlay (20) */
+    z-index: 8; /* below navigation rail (10) so titles appear over overlay */
     width: min(520px, calc(100% - 48px));
     pointer-events: auto;
     text-align: center;
