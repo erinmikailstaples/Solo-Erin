@@ -485,6 +485,44 @@
     border-color: rgba(255,255,255,0.35);
 }
 
+/* Browse All Posts link */
+.imm-about__browse-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 200ms ease;
+    justify-self: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imm-about__browse-link:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-1px);
+    color: #fff;
+}
+
+.imm-about__arrow {
+    width: 14px;
+    height: 14px;
+    transition: transform 200ms ease;
+}
+
+.imm-about__browse-link:hover .imm-about__arrow {
+    transform: translateX(2px);
+}
+
 /* Subtle clamping to keep the overlay compact */
 @supports (-webkit-line-clamp: 3) {
     .imm-about__subtitle {
