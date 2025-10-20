@@ -114,21 +114,28 @@ function initParallax() {
             const elementsToHide = clone.querySelectorAll('.resume-nav, .gh-head, .gh-foot, .resume-pdf-button');
             elementsToHide.forEach(el => el.style.display = 'none');
             
+            // Get the actual dimensions of the content
+            const contentRect = element.getBoundingClientRect();
+            const contentHeight = element.scrollHeight;
+            const contentWidth = element.scrollWidth;
+            
             // Configure PDF options
             const opt = {
-                margin: [0.5, 0.5, 0.5, 0.5], // top, left, bottom, right in inches
+                margin: [0.4, 0.4, 0.4, 0.4], // top, left, bottom, right in inches
                 filename: 'Erin_Mikail_Staples_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.85 },
+                image: { type: 'jpeg', quality: 0.90 },
                 html2canvas: {
-                    scale: 1.5, // Reduced from 2 to fix canvas size issue
+                    scale: 1.2,
                     useCORS: true,
                     allowTaint: true,
                     letterRendering: true,
                     logging: false,
-                    width: 800, // Set max width
-                    height: 1200, // Set max height
+                    width: Math.min(contentWidth, 900),
+                    height: Math.min(contentHeight, 2400), // Allow for longer content
                     scrollX: 0,
-                    scrollY: 0
+                    scrollY: 0,
+                    windowWidth: contentWidth,
+                    windowHeight: contentHeight
                 },
                 jsPDF: {
                     unit: 'in',
@@ -137,9 +144,8 @@ function initParallax() {
                     compressPDF: true
                 },
                 pagebreak: {
-                    mode: ['avoid-all', 'css', 'legacy'],
+                    mode: ['avoid-all', 'css'],
                     before: '.resume-section',
-                    after: '.resume-role',
                     avoid: '.resume-role'
                 }
             };
