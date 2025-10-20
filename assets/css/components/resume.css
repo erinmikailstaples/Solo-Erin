@@ -201,10 +201,63 @@
   }
 }
 
+/* Education section specific styling */
+#education .resume-role {
+  margin: 1rem 0;
+  padding: 0.8rem 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+#education .resume-role:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+#education h3 {
+  font-size: 1.4rem !important;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+  color: #333;
+}
+
+#education .meta {
+  color: #666;
+  font-size: 1.15rem !important;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* Projects section specific styling */
+#projects .resume-role {
+  margin: 1.2rem 0;
+  padding: 0.8rem 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+#projects .resume-role:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+#projects h3 {
+  font-size: 1.4rem !important;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+#projects p {
+  font-size: 1.2rem !important;
+  line-height: 1.5;
+  color: #444;
+  margin: 0;
+}
+
 /* Item dates */
 .item-dates {
   color: #666;
-  font-size: 0.9em;
+  font-size: 1.1rem !important;
+  font-weight: 400;
 }
 
 /* Role notes */
@@ -212,6 +265,7 @@
   color: #666;
   font-style: italic;
   margin: 1rem 0;
+  font-size: 1.15rem !important;
 }
 
 /* Mobile */
