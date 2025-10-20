@@ -402,75 +402,83 @@
 /* About overlay */
 .imm-about {
     position: absolute;
-    top: max(24px, env(safe-area-inset-top));
-    left: 50%;
-    transform: translateX(-50%);
+    top: max(32px, env(safe-area-inset-top));
+    left: max(32px, env(safe-area-inset-left));
     z-index: 8; /* below navigation rail (10) so titles appear over overlay */
-    width: min(520px, calc(100% - 48px));
+    width: min(420px, calc(100% - 64px));
     pointer-events: auto;
-    text-align: center;
+    text-align: left;
 }
 
 .imm-about__inner {
     display: grid;
     gap: 0.75rem;
-    padding: 1rem 1.25rem;
-    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    border-radius: 20px;
     color: #fff;
-    background: rgba(0,0,0,0.45);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    -webkit-backdrop-filter: blur(12px) saturate(110%);
-    backdrop-filter: blur(12px) saturate(110%);
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    backdrop-filter: blur(16px) saturate(120%);
+    max-width: 100%;
 }
 
 .imm-about__title {
     margin: 0;
-    line-height: 1.15;
+    line-height: 1.2;
     font-weight: 700;
-    font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
-    text-shadow: 0 2px 14px rgba(0,0,0,0.7);
+    font-size: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+    text-shadow: 0 2px 16px rgba(0,0,0,0.8);
+    letter-spacing: -0.025em;
 }
 
 .imm-about__subtitle {
     margin: 0;
-    opacity: 0.95;
-    font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
-    text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+    opacity: 0.9;
+    font-size: clamp(1.05rem, 0.95rem + 0.3vw, 1.2rem);
+    text-shadow: 0 1px 12px rgba(0,0,0,0.7);
+    line-height: 1.4;
+    font-weight: 400;
 }
 
 /* Subscribe section */
 .imm-about__subscribe {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.5rem;
+    display: inline-flex;
     align-items: center;
-    margin-top: 0.25rem;
-    padding: 8px 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.1);
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    padding: 10px 16px;
+    border-radius: 32px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
     cursor: pointer;
-    transition: background-color 200ms ease;
+    transition: all 250ms ease;
+    font-size: 0.95rem;
+    max-width: fit-content;
 }
 
 .imm-about__subscribe:hover {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-1px);
 }
 
 .imm-about__button {
-    padding: 6px 12px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.15);
     color: #fff;
-    font-weight: 600;
-    font-size: 0.9rem;
-    border: 1px solid rgba(255,255,255,0.3);
+    font-weight: 500;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.2);
     transition: all 200ms ease;
+    white-space: nowrap;
 }
 
 .imm-about__button:hover {
-    background: rgba(255,255,255,0.3);
-    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.35);
 }
 
 /* Subtle clamping to keep the overlay compact */
@@ -483,15 +491,24 @@
     }
 }
 
-/* Respect immersive rail positions: keep top-center to avoid rail collisions */
-@media (max-width: 680px) {
+/* Responsive positioning for smaller screens */
+@media (max-width: 768px) {
     .imm-about {
-        top: max(16px, env(safe-area-inset-top));
-        width: calc(100% - 24px);
+        top: max(24px, env(safe-area-inset-top));
+        left: max(20px, env(safe-area-inset-left));
+        width: calc(100% - 40px);
+        max-width: 360px;
     }
     .imm-about__inner {
-        padding: 0.75rem 0.875rem;
-        border-radius: 14px;
+        padding: 1rem 1.25rem;
+        border-radius: 16px;
+    }
+    .imm-about__title {
+        font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    }
+    .imm-about__subscribe {
+        padding: 8px 12px;
+        gap: 0.5rem;
     }
 }
 
