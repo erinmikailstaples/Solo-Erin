@@ -116,15 +116,19 @@ function initParallax() {
             
             // Configure PDF options
             const opt = {
-                margin: [0.75, 0.5, 0.75, 0.5], // top, left, bottom, right in inches
+                margin: [0.5, 0.5, 0.5, 0.5], // top, left, bottom, right in inches
                 filename: 'Erin_Mikail_Staples_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.95 },
+                image: { type: 'jpeg', quality: 0.85 },
                 html2canvas: {
-                    scale: 2,
+                    scale: 1.5, // Reduced from 2 to fix canvas size issue
                     useCORS: true,
                     allowTaint: true,
                     letterRendering: true,
-                    logging: false
+                    logging: false,
+                    width: 800, // Set max width
+                    height: 1200, // Set max height
+                    scrollX: 0,
+                    scrollY: 0
                 },
                 jsPDF: {
                     unit: 'in',

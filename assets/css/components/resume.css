@@ -30,6 +30,12 @@
   text-align: left;
 }
 
+.resume-header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .resume-name {
   font-size: 3rem !important;
   font-weight: 700;
@@ -304,23 +310,21 @@
 
 /* PDF Download Button */
 .resume-pdf-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
   background: #0066cc;
   color: white;
   border: none;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
   transition: all 0.2s ease;
-  z-index: 1000;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-top: 1rem;
+  float: right;
 }
 
 .resume-pdf-button:hover {
