@@ -1,5 +1,8 @@
 <article class="gh-card {{post_class}}"{{#if primary_tag.accent_color}} style="--tag-color: {{primary_tag.accent_color}};"{{/if}}>
-    <a class="gh-card-link" href="{{url}}">
+    {{#if primary_tag}}
+        <a class="gh-card-tag" href="{{primary_tag.url}}" style="--tag-color: {{primary_tag.accent_color}}">{{primary_tag.name}}</a>
+    {{/if}}
+    <a class="gh-card-link" href="{{url}}"
 
         {{#match @custom.post_feed_layout "!=" "Typographic"}}
             <figure class="gh-card-image">

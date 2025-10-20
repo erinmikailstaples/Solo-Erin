@@ -660,7 +660,8 @@ hr {
     color: var(--color-secondary-text);
 }
 
-.gh-article-tag {
+.gh-article-tag,
+.gh-card-tag {
     display: inline-block;
     width: fit-content;
     padding: 2px 12px;
@@ -672,6 +673,12 @@ hr {
     letter-spacing: -0.01em;
     border: 2px solid var(--color-border);
     border-radius: 24px;
+}
+
+.gh-card-tag {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.4rem;
 }
 
 .gh-content .gh-article-header {
