@@ -402,12 +402,13 @@
 /* About overlay */
 .imm-about {
     position: absolute;
-    top: max(32px, env(safe-area-inset-top));
-    left: max(32px, env(safe-area-inset-left));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 8; /* below navigation rail (10) so titles appear over overlay */
-    width: min(420px, calc(100% - 64px));
+    width: min(520px, calc(100% - 64px));
     pointer-events: auto;
-    text-align: left;
+    text-align: center;
 }
 
 .imm-about__inner {
@@ -444,18 +445,21 @@
 
 /* Subscribe section */
 .imm-about__subscribe {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-top: 0.5rem;
-    padding: 10px 16px;
+    margin-top: 0.75rem;
+    padding: 12px 18px;
     border-radius: 32px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
     cursor: pointer;
     transition: all 250ms ease;
     font-size: 0.95rem;
-    max-width: fit-content;
+    justify-self: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .imm-about__subscribe:hover {
