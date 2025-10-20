@@ -302,9 +302,66 @@
   }
 }
 
+/* PDF Download Button */
+.resume-pdf-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resume-pdf-button:hover {
+  background: #004499;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 102, 204, 0.4);
+}
+
+.resume-pdf-button:active {
+  transform: translateY(0);
+}
+
+.resume-pdf-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.resume-pdf-button .pdf-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.resume-pdf-button .loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* Print styles */
 @media print {
-  .site-header, .site-footer, .resume-nav, .post-actions, .subscribe, .floating-subscribe, .gh-foot { 
+  .site-header, .site-footer, .resume-nav, .post-actions, .subscribe, .floating-subscribe, .gh-foot, .resume-pdf-button { 
     display: none !important; 
   }
   
@@ -321,4 +378,72 @@
     color: #000;
     text-decoration: none;
   }
+}
+
+/* PDF-specific styles for html2pdf */
+.pdf-content .resume {
+  padding: 40px;
+  max-width: none;
+  font-size: 14px;
+  background: white;
+}
+
+.pdf-content .resume-name {
+  font-size: 2.4rem !important;
+  margin-bottom: 0.3rem;
+}
+
+.pdf-content .resume-pronouns {
+  font-size: 1.1rem !important;
+}
+
+.pdf-content .resume-title {
+  font-size: 1.5rem !important;
+}
+
+.pdf-content .resume-location {
+  font-size: 1.2rem !important;
+}
+
+.pdf-content .resume-contact a {
+  font-size: 1rem !important;
+}
+
+.pdf-content .resume-section > h2 {
+  font-size: 1.8rem !important;
+  margin: 1.5rem 0 1rem 0;
+  page-break-after: avoid;
+}
+
+.pdf-content .resume-section p {
+  font-size: 1.1rem !important;
+}
+
+.pdf-content .resume-role {
+  page-break-inside: avoid;
+  margin: 1rem 0;
+}
+
+.pdf-content .resume-experience h3 {
+  font-size: 1.3rem !important;
+}
+
+.pdf-content .resume-experience .meta {
+  font-size: 1rem !important;
+}
+
+.pdf-content .resume-experience li,
+.pdf-content .resume-list li {
+  font-size: 1rem !important;
+  line-height: 1.4;
+}
+
+.pdf-content #skills ul {
+  columns: 2;
+  column-gap: 1.5rem;
+}
+
+.pdf-content .resume-list.two-col {
+  columns: 2;
+  column-gap: 1.5rem;
 }

@@ -8,9 +8,17 @@
             <header class="gh-article-header">
                 <h1 class="gh-article-title">{{title}}</h1>
             </header>
+            
+            <!-- PDF Download Button -->
+            <button class="resume-pdf-button" id="download-pdf" aria-label="Download resume as PDF">
+                <svg class="pdf-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                </svg>
+                <span class="button-text">Download PDF</span>
+            </button>
 
             <div class="gh-content">
-                <div class="resume-wrap resume">
+                <div class="resume-wrap resume" id="resume-content">
                     <header class="resume-header">
                         <h2 class="resume-name">Erin Mikail Staples <span class="resume-pronouns">(she/her/hers)</span></h2>
                         <p class="resume-headline resume-title">Developer Experience and Education</p>
@@ -228,3 +236,6 @@
         </article>
     </div>
 </main>
+
+<!-- html2pdf library for PDF generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

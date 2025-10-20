@@ -53,6 +53,124 @@ function initParallax() {
     pagination(true, initParallax);
 })();
 
+// Resume PDF generation functionality
+(function () {
+    const pdfButton = document.getElementById('download-pdf');
+    if (!pdfButton) return;
+    
+    let isGenerating = false;
+    
+    function showLoading() {
+        isGenerating = true;
+        pdfButton.disabled = true;
+        const buttonText = pdfButton.querySelector('.button-text');
+        const icon = pdfButton.querySelector('.pdf-icon');
+        
+        if (buttonText) buttonText.textContent = 'Generating...';
+        if (icon) {
+            icon.style.display = 'none';
+            const spinner = document.createElement('div');
+            spinner.className = 'loading-spinner';
+            pdfButton.insertBefore(spinner, buttonText);
+        }
+    }
+    
+    function hideLoading() {
+        isGenerating = false;
+        pdfButton.disabled = false;
+        const buttonText = pdfButton.querySelector('.button-text');
+        const icon = pdfButton.querySelector('.pdf-icon');
+        const spinner = pdfButton.querySelector('.loading-spinner');
+        
+        if (buttonText) buttonText.textContent = 'Download PDF';
+        if (icon) icon.style.display = 'block';
+        if (spinner) spinner.remove();
+    }
+    
+    function showError(message) {
+        hideLoading();
+        // Simple error handling - could be enhanced with toast notifications
+        alert('PDF generation failed: ' + (message || 'Unknown error'));
+    }
+    
+    function generatePDF() {
+        if (isGenerating || !window.html2pdf) return;
+        
+        showLoading();
+        
+        try {
+            const element = document.getElementById('resume-content');
+            if (!element) {
+                throw new Error('Resume content not found');
+            }
+            
+            // Clone the element to avoid modifying the original
+            const clone = element.cloneNode(true);
+            
+            // Add PDF-specific class for styling
+            clone.classList.add('pdf-content');
+            
+            // Hide elements that shouldn't appear in PDF
+            const elementsToHide = clone.querySelectorAll('.resume-nav, .gh-head, .gh-foot, .resume-pdf-button');
+            elementsToHide.forEach(el => el.style.display = 'none');
+            
+            // Configure PDF options
+            const opt = {
+                margin: [0.75, 0.5, 0.75, 0.5], // top, left, bottom, right in inches
+                filename: 'Erin_Mikail_Staples_Resume.pdf',
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    letterRendering: true,
+                    logging: false
+                },
+                jsPDF: {
+                    unit: 'in',
+                    format: 'letter',
+                    orientation: 'portrait',
+                    compressPDF: true
+                },
+                pagebreak: {
+                    mode: ['avoid-all', 'css', 'legacy'],
+                    before: '.resume-section',
+                    after: '.resume-role',
+                    avoid: '.resume-role'
+                }
+            };
+            
+            // Generate PDF
+            html2pdf()
+                .set(opt)
+                .from(clone)
+                .save()
+                .then(() => {
+                    hideLoading();
+                })
+                .catch(error => {
+                    console.error('PDF generation error:', error);
+                    showError(error.message);
+                });
+                
+        } catch (error) {
+            console.error('PDF generation error:', error);
+            showError(error.message);
+        }
+    }
+    
+    // Add click event listener
+    pdfButton.addEventListener('click', generatePDF);
+    
+    // Add keyboard support
+    pdfButton.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            generatePDF();
+        }
+    });
+})();
+
 // Immersive index functionality
 (function () {
     function initImmersiveIndex(opts) {
