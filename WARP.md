@@ -39,6 +39,7 @@ The theme now includes an optional immersive index layout that transforms your h
 - **Theme settings**: Defined in `package.json` → `config.custom` object
 - **Available options**: Background color, navigation layout (left/middle/stacked), typography (sans/serif/mono), header section layouts, post feed layouts
 - **Dynamic styling**: CSS custom properties set via `--background-color` with JavaScript color contrast calculation
+- **Tag visibility**: Primary tags now display on all post cards in feeds for better content discovery
 
 ### Ghost Integration
 - **Requirements**: Ghost >=5.0.0
@@ -108,3 +109,21 @@ All settings are available in **Settings → Design → Homepage**:
 - Gracefully falls back to standard layout if disabled
 - Requires at least 1 published post
 - Works best with high-quality landscape feature images
+
+## Post Card Tags
+
+### Overview
+Post cards throughout the theme now display the primary tag for each post, making it easier to identify content categories at a glance. Tags appear as styled pills above the post content and inherit the tag's accent color when set in Ghost Admin.
+
+### Features
+- **Automatic display**: Primary tags show on all post cards in feeds (homepage, tag pages, author pages)
+- **Visual consistency**: Uses the same pill styling as single post pages
+- **Color inheritance**: Respects tag accent colors set in Ghost Admin → Tags
+- **Responsive design**: Appropriately sized for post cards vs full articles
+- **Clean markup**: Tags are placed outside main post links to avoid nested anchor issues
+
+### Technical Implementation
+- **Template**: `partials/loop.hbs` contains the tag display logic
+- **CSS**: `.gh-card-tag` class extends existing `.gh-article-tag` styling
+- **Conditional rendering**: Only shows when posts have a primary tag assigned
+- **Accessibility**: Maintains proper link structure and navigation
