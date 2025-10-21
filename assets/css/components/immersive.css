@@ -459,10 +459,14 @@
     font-size: 0.85rem;
     justify-self: center;
     width: fit-content;
-    max-width: 280px;
+    min-width: 280px;
+    max-width: 320px;
     margin-left: auto;
     margin-right: auto;
     text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .imm-about__subscribe:hover {
@@ -472,7 +476,7 @@
 }
 
 .imm-about__button {
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 14px;
     background: rgba(255,255,255,0.15);
     color: #fff;
@@ -481,6 +485,9 @@
     border: 1px solid rgba(255,255,255,0.2);
     transition: all 200ms ease;
     white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 60px;
+    text-align: center;
 }
 
 .imm-about__button:hover {
@@ -566,6 +573,14 @@
     .imm-about__subscribe {
         padding: 8px 12px;
         gap: 0.5rem;
+        min-width: 260px;
+        max-width: 300px;
+        font-size: 0.8rem;
+    }
+    .imm-about__button {
+        padding: 3px 10px;
+        font-size: 0.75rem;
+        min-width: 55px;
     }
 }
 
