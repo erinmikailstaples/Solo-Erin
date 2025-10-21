@@ -193,6 +193,56 @@ function initParallax() {
     });
 })();
 
+// Hide/show browse button based on scroll for immersive template
+(function () {
+    function initScrollBasedVisibility() {
+        const browseLink = document.querySelector('.imm-about__browse-link');
+        if (!browseLink) return;
+        
+        let isVisible = false;
+        
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Show the button when user has scrolled past the initial viewport
+            // or when they're near the bottom of the page
+            const shouldShow = scrollY > windowHeight * 0.3 || 
+                             (scrollY + windowHeight) > (documentHeight - windowHeight * 0.2);
+            
+            if (shouldShow && !isVisible) {
+                isVisible = true;
+                browseLink.classList.add('is-visible');
+            } else if (!shouldShow && isVisible) {
+                isVisible = false;
+                browseLink.classList.remove('is-visible');
+            }
+        }
+        
+        // Throttle scroll events for better performance
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            scrollTimeout = setTimeout(handleScroll, 10);
+        });
+        
+        // Initial check
+        handleScroll();
+    }
+    
+    // Initialize scroll-based visibility for immersive template
+    if (document.body.classList.contains('template-immersive')) {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initScrollBasedVisibility);
+        } else {
+            initScrollBasedVisibility();
+        }
+    }
+})();
+
 // Immersive index functionality
 (function () {
     function initImmersiveIndex(opts) {
