@@ -996,7 +996,7 @@ hr {
     justify-content: space-between;
     width: 100%;
     max-width: 480px;
-    min-width: 300px;
+    min-width: 350px;
     height: 52px;
     padding: 0 8px 0 24px;
     margin-top: 40px;
@@ -1007,10 +1007,15 @@ hr {
     border-radius: 72px;
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .gh-subscribe-input .gh-btn {
     font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 80px;
+    padding: 8px 16px;
 }
 
 /* Archive
