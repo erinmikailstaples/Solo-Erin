@@ -1,6 +1,12 @@
 <article class="gh-card {{post_class}}"{{#if primary_tag.accent_color}} style="--tag-color: {{primary_tag.accent_color}};"{{/if}}>
-    {{#if primary_tag}}
-        <a class="gh-card-tag" href="{{primary_tag.url}}" style="--tag-color: {{primary_tag.accent_color}}">{{primary_tag.name}}</a>
+    {{#if tags}}
+        <div class="gh-card-tags">
+            {{#foreach tags}}
+                {{#unless (eq name "All Posts")}}
+                    <a class="gh-card-tag" href="{{url}}" style="--tag-color: {{accent_color}}">{{name}}</a>
+                {{/unless}}
+            {{/foreach}}
+        </div>
     {{/if}}
     <a class="gh-card-link" href="{{url}}"
 
