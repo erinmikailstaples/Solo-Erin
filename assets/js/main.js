@@ -141,22 +141,23 @@ function initParallax() {
             
             // Configure PDF options
             const opt = {
-                margin: [0.5, 0.5, 0.5, 0.5], // top, left, bottom, right in inches
+                margin: [0.6, 0.6, 0.6, 0.6], // top, left, bottom, right in inches
                 filename: 'Erin_Mikail_Staples_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.95 },
+                image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
-                    scale: 2, // Higher scale for better quality
+                    scale: 2.5, // Higher scale for better quality
                     useCORS: true,
                     allowTaint: true,
                     letterRendering: true,
                     logging: false,
-                    width: Math.min(contentWidth, 1200),
-                    height: Math.min(contentHeight, 3000),
+                    width: Math.min(contentWidth, 1400),
+                    height: Math.min(contentHeight, 4000),
                     scrollX: 0,
                     scrollY: 0,
                     windowWidth: contentWidth,
                     windowHeight: contentHeight,
-                    backgroundColor: '#ffffff'
+                    backgroundColor: '#ffffff',
+                    dpi: 300
                 },
                 jsPDF: {
                     unit: 'in',

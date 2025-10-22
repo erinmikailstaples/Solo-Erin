@@ -487,60 +487,73 @@
 
 /* PDF-specific styles for html2pdf */
 .pdf-content .resume {
-  padding: 40px;
+  padding: 60px 50px;
   max-width: none;
-  font-size: 14px;
+  font-size: 12px;
   background: white;
+  line-height: 1.4;
 }
 
 .pdf-content .resume-name {
-  font-size: 2.4rem !important;
-  margin-bottom: 0.3rem;
+  font-size: 2.2rem !important;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 .pdf-content .resume-pronouns {
-  font-size: 1.1rem !important;
-}
-
-.pdf-content .resume-title {
-  font-size: 1.5rem !important;
-}
-
-.pdf-content .resume-location {
-  font-size: 1.2rem !important;
-}
-
-.pdf-content .resume-contact a {
   font-size: 1rem !important;
 }
 
+.pdf-content .resume-title {
+  font-size: 1.4rem !important;
+  margin-bottom: 0.3rem;
+}
+
+.pdf-content .resume-location {
+  font-size: 1.1rem !important;
+  margin-bottom: 1rem;
+}
+
+.pdf-content .resume-contact a {
+  font-size: 0.95rem !important;
+  margin-right: 1rem;
+  display: inline-block;
+}
+
 .pdf-content .resume-section > h2 {
-  font-size: 1.8rem !important;
-  margin: 1.5rem 0 1rem 0;
+  font-size: 1.6rem !important;
+  margin: 2rem 0 1.2rem 0;
   page-break-after: avoid;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.3rem;
 }
 
 .pdf-content .resume-section p {
-  font-size: 1.1rem !important;
+  font-size: 1rem !important;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
 }
 
 .pdf-content .resume-role {
   page-break-inside: avoid;
-  margin: 1rem 0;
+  margin: 1.2rem 0;
 }
 
 .pdf-content .resume-experience h3 {
-  font-size: 1.3rem !important;
+  font-size: 1.2rem !important;
+  margin-bottom: 0.3rem;
 }
 
 .pdf-content .resume-experience .meta {
-  font-size: 1rem !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 0.5rem;
 }
 
 .pdf-content .resume-experience li,
 .pdf-content .resume-list li {
-  font-size: 1rem !important;
-  line-height: 1.4;
+  font-size: 0.95rem !important;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
 }
 
 .pdf-content #skills ul {
@@ -555,17 +568,19 @@
 
 /* PDF-specific details styling */
 .pdf-content details {
-  margin: 1rem 0;
+  margin: 1.2rem 0;
   border: none;
   padding: 0;
+  page-break-inside: avoid;
 }
 
 .pdf-content summary {
-  font-size: 1.3rem !important;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem !important;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
   cursor: default;
   list-style: none;
+  line-height: 1.3;
 }
 
 .pdf-content summary::before {
@@ -573,13 +588,19 @@
 }
 
 .pdf-content .job-summary {
-  font-size: 1rem !important;
+  font-size: 0.9rem !important;
   color: #666;
   font-style: italic;
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
   margin-bottom: 0.5rem;
+  line-height: 1.4;
 }
 
 .pdf-content .job-details {
   margin-top: 0.5rem;
+}
+
+.pdf-content .job-details ul {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
 }
