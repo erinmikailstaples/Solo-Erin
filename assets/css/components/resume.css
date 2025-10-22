@@ -440,6 +440,30 @@
   to { transform: rotate(360deg); }
 }
 
+/* PDF-specific styles */
+.pdf-content {
+  background: white !important;
+  color: black !important;
+  font-family: Arial, sans-serif !important;
+}
+
+.pdf-content .resume-pdf-button,
+.pdf-content .resume-nav,
+.pdf-content .gh-head,
+.pdf-content .gh-foot {
+  display: none !important;
+}
+
+.pdf-content .resume-section {
+  page-break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+.pdf-content .resume-role {
+  page-break-inside: avoid;
+  margin-bottom: 0.5rem;
+}
+
 /* Print styles */
 @media print {
   .site-header, .site-footer, .resume-nav, .post-actions, .subscribe, .floating-subscribe, .gh-foot, .resume-pdf-button { 

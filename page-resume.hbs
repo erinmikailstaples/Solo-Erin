@@ -257,3 +257,19 @@
 
 <!-- html2pdf library for PDF generation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+// Check if html2pdf loaded successfully
+window.addEventListener('load', function() {
+    if (typeof html2pdf === 'undefined') {
+        console.error('html2pdf library failed to load');
+        const pdfButton = document.getElementById('download-pdf');
+        if (pdfButton) {
+            pdfButton.disabled = true;
+            pdfButton.querySelector('.button-text').textContent = 'PDF Library Error';
+            pdfButton.title = 'PDF library failed to load. Please refresh the page.';
+        }
+    } else {
+        console.log('html2pdf library loaded successfully');
+    }
+});
+</script>

@@ -94,7 +94,13 @@ function initParallax() {
     }
     
     function generatePDF() {
-        if (isGenerating || !window.html2pdf) return;
+        if (isGenerating) return;
+        
+        // Check if html2pdf is available
+        if (!window.html2pdf) {
+            showError('PDF library not loaded. Please refresh the page and try again.');
+            return;
+        }
         
         showLoading();
         
@@ -103,6 +109,8 @@ function initParallax() {
             if (!element) {
                 throw new Error('Resume content not found');
             }
+            
+            console.log('Starting PDF generation...');
             
             // Clone the element to avoid modifying the original
             const clone = element.cloneNode(true);
@@ -133,21 +141,22 @@ function initParallax() {
             
             // Configure PDF options
             const opt = {
-                margin: [0.4, 0.4, 0.4, 0.4], // top, left, bottom, right in inches
+                margin: [0.5, 0.5, 0.5, 0.5], // top, left, bottom, right in inches
                 filename: 'Erin_Mikail_Staples_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.90 },
+                image: { type: 'jpeg', quality: 0.95 },
                 html2canvas: {
-                    scale: 1.2,
+                    scale: 2, // Higher scale for better quality
                     useCORS: true,
                     allowTaint: true,
                     letterRendering: true,
                     logging: false,
-                    width: Math.min(contentWidth, 900),
-                    height: Math.min(contentHeight, 2400), // Allow for longer content
+                    width: Math.min(contentWidth, 1200),
+                    height: Math.min(contentHeight, 3000),
                     scrollX: 0,
                     scrollY: 0,
                     windowWidth: contentWidth,
-                    windowHeight: contentHeight
+                    windowHeight: contentHeight,
+                    backgroundColor: '#ffffff'
                 },
                 jsPDF: {
                     unit: 'in',
@@ -163,11 +172,13 @@ function initParallax() {
             };
             
             // Generate PDF
+            console.log('Generating PDF with options:', opt);
             html2pdf()
                 .set(opt)
                 .from(clone)
                 .save()
                 .then(() => {
+                    console.log('PDF generated successfully');
                     hideLoading();
                 })
                 .catch(error => {
