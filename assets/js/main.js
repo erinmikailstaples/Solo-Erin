@@ -175,13 +175,13 @@ function initParallax() {
             const contentHeight = element.scrollHeight;
             const contentWidth = element.scrollWidth;
             
-            // Simplified PDF options - back to basics
+            // Balanced PDF options for readability and single page
             const opt = {
-                margin: [0.2, 0.2, 0.2, 0.2], // Small margins
+                margin: [0.3, 0.3, 0.3, 0.3], // Moderate margins
                 filename: 'Erin_Mikail_Staples_Resume.pdf',
                 image: { type: 'jpeg', quality: 0.95 },
                 html2canvas: {
-                    scale: 1.5, // Moderate scale
+                    scale: 1.8, // Higher scale for better readability
                     useCORS: true,
                     allowTaint: true,
                     letterRendering: true,
