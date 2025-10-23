@@ -46,9 +46,7 @@
                             {{#if tags}}
                                 <div class="gh-article-tags">
                                     {{#foreach tags}}
-                                        {{#unless (eq name "All Posts")}}
-                                            <a class="gh-article-tag" href="{{url}}" style="--tag-color: {{accent_color}}">{{name}}</a>
-                                        {{/unless}}
+                                        <a class="gh-article-tag" href="{{url}}" style="--tag-color: {{accent_color}}">{{name}}</a>
                                     {{/foreach}}
                                 </div>
                             {{/if}}

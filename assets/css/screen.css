@@ -715,6 +715,12 @@ hr {
     border-color: var(--tag-color, var(--color-darker-gray));
 }
 
+/* Hide "All Posts" tag - handled by JavaScript */
+.gh-article-tag.hide-all-posts,
+.gh-card-tag.hide-all-posts {
+    display: none !important;
+}
+
 /* Responsive tag styling */
 @media (max-width: 768px) {
     .gh-article-tags,

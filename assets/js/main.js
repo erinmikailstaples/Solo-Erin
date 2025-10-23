@@ -53,6 +53,30 @@ function initParallax() {
     pagination(true, initParallax);
 })();
 
+// Hide "All Posts" tags
+(function () {
+    function hideAllPostsTags() {
+        const tags = document.querySelectorAll('.gh-article-tag, .gh-card-tag');
+        tags.forEach(tag => {
+            if (tag.textContent.trim() === 'All Posts') {
+                tag.classList.add('hide-all-posts');
+            }
+        });
+    }
+    
+    // Run on page load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hideAllPostsTags);
+    } else {
+        hideAllPostsTags();
+    }
+    
+    // Run after pagination (for dynamic content)
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(hideAllPostsTags, 100);
+    });
+})();
+
 // Resume PDF generation functionality
 (function () {
     const pdfButton = document.getElementById('download-pdf');
