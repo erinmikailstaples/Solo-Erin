@@ -606,32 +606,15 @@
   padding-left: 0.5rem;
 }
 
-/* Ensure all content is visible in PDF - Fix for html2pdf.js known issues */
+/* Ensure all content is visible in PDF */
 .pdf-content {
   overflow: visible !important;
   height: auto !important;
   max-height: none !important;
-  width: 8.5in !important;
-  position: static !important;
-  transform: none !important;
 }
 
 .pdf-content * {
   box-sizing: border-box;
-  position: static !important;
-  transform: none !important;
-  overflow: visible !important;
-}
-
-/* Fix for html2pdf.js node cloning issues */
-.pdf-content .resume-section,
-.pdf-content .resume-role,
-.pdf-content .resume-experience {
-  position: static !important;
-  transform: none !important;
-  overflow: visible !important;
-  display: block !important;
-  visibility: visible !important;
 }
 
 /* Ultra-compact two-column layouts for skills */

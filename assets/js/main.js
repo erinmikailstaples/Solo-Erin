@@ -158,68 +158,41 @@ function initParallax() {
                 }
             });
             
-            // Fix for html2pdf.js known issues
-            // 1. Prevent resizing issues by setting explicit dimensions
-            clone.style.width = '8.5in'; // Standard letter width
+            // Simplified approach - just ensure content is visible
+            clone.style.overflow = 'visible';
             clone.style.height = 'auto';
             clone.style.maxHeight = 'none';
-            clone.style.overflow = 'visible';
-            clone.style.position = 'static';
-            clone.style.transform = 'none';
             
-            // 2. Ensure all content is visible and properly styled
-            const allElements = clone.querySelectorAll('*');
-            allElements.forEach(el => {
-                el.style.position = 'static';
-                el.style.transform = 'none';
-                el.style.overflow = 'visible';
-            });
-            
-            // 3. Force all sections to be visible
+            // Force all sections to be visible
             const sections = clone.querySelectorAll('.resume-section');
             sections.forEach(section => {
                 section.style.display = 'block';
                 section.style.visibility = 'visible';
-                section.style.position = 'static';
             });
-            
-            // 4. Fix for canvas size limits - ensure content fits
-            const contentHeight = clone.scrollHeight;
-            const maxCanvasHeight = 16384; // HTML5 canvas limit
-            
-            if (contentHeight > maxCanvasHeight) {
-                console.warn('Content height exceeds canvas limits, applying compression');
-                // Apply additional compression if content is too large
-                clone.style.fontSize = '7px';
-                clone.style.lineHeight = '1.0';
-            }
             
             // Get the actual dimensions of the content
             const contentRect = element.getBoundingClientRect();
             const contentHeight = element.scrollHeight;
             const contentWidth = element.scrollWidth;
             
-            // Configure PDF options addressing html2pdf.js known issues
+            // Simplified PDF options - back to basics
             const opt = {
-                margin: [0.1, 0.1, 0.1, 0.1], // Minimal margins for maximum content
+                margin: [0.2, 0.2, 0.2, 0.2], // Small margins
                 filename: 'Erin_Mikail_Staples_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.9 },
+                image: { type: 'jpeg', quality: 0.95 },
                 html2canvas: {
-                    scale: 1.0, // Lower scale to prevent canvas size issues
+                    scale: 1.5, // Moderate scale
                     useCORS: true,
                     allowTaint: true,
                     letterRendering: true,
                     logging: false,
-                    width: Math.min(contentWidth, 1200), // Limit width to prevent issues
-                    height: Math.min(contentHeight, 15000), // Limit height to stay under canvas limits
+                    width: contentWidth,
+                    height: contentHeight,
                     scrollX: 0,
                     scrollY: 0,
-                    windowWidth: Math.min(contentWidth, 1200),
-                    windowHeight: Math.min(contentHeight, 15000),
-                    backgroundColor: '#ffffff',
-                    // Additional options to prevent rendering issues
-                    foreignObjectRendering: false,
-                    removeContainer: true
+                    windowWidth: contentWidth,
+                    windowHeight: contentHeight,
+                    backgroundColor: '#ffffff'
                 },
                 jsPDF: {
                     unit: 'in',
@@ -228,15 +201,17 @@ function initParallax() {
                     compressPDF: true
                 },
                 pagebreak: {
-                    mode: ['avoid-all'], // Use avoid-all to prevent page breaks
-                    before: [],
-                    after: [],
-                    avoid: ['.resume-section', '.resume-role', '.resume-experience']
+                    mode: ['avoid-all', 'css'],
+                    before: '.resume-section',
+                    avoid: '.resume-role'
                 }
             };
             
             // Generate PDF
             console.log('Generating PDF with options:', opt);
+            console.log('Clone element:', clone);
+            console.log('Clone dimensions:', clone.scrollWidth, 'x', clone.scrollHeight);
+            
             html2pdf()
                 .set(opt)
                 .from(clone)
@@ -247,7 +222,8 @@ function initParallax() {
                 })
                 .catch(error => {
                     console.error('PDF generation error:', error);
-                    showError(error.message);
+                    console.error('Error details:', error);
+                    showError('PDF generation failed: ' + (error.message || 'Unknown error'));
                 });
                 
         } catch (error) {
