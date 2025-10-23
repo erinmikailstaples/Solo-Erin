@@ -158,30 +158,41 @@ function initParallax() {
                 }
             });
             
+            // Ensure all content is visible
+            clone.style.overflow = 'visible';
+            clone.style.height = 'auto';
+            clone.style.maxHeight = 'none';
+            
+            // Force all sections to be visible
+            const sections = clone.querySelectorAll('.resume-section');
+            sections.forEach(section => {
+                section.style.display = 'block';
+                section.style.visibility = 'visible';
+            });
+            
             // Get the actual dimensions of the content
             const contentRect = element.getBoundingClientRect();
             const contentHeight = element.scrollHeight;
             const contentWidth = element.scrollWidth;
             
-            // Configure PDF options
+            // Configure PDF options for single page
             const opt = {
-                margin: [0.6, 0.6, 0.6, 0.6], // top, left, bottom, right in inches
+                margin: [0.3, 0.3, 0.3, 0.3], // Smaller margins for more content
                 filename: 'Erin_Mikail_Staples_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
+                image: { type: 'jpeg', quality: 0.95 },
                 html2canvas: {
-                    scale: 2.5, // Higher scale for better quality
+                    scale: 1.5, // Lower scale to fit more content
                     useCORS: true,
                     allowTaint: true,
                     letterRendering: true,
                     logging: false,
-                    width: Math.min(contentWidth, 1400),
-                    height: Math.min(contentHeight, 4000),
+                    width: contentWidth,
+                    height: contentHeight, // Use full height, no artificial limits
                     scrollX: 0,
                     scrollY: 0,
                     windowWidth: contentWidth,
                     windowHeight: contentHeight,
-                    backgroundColor: '#ffffff',
-                    dpi: 300
+                    backgroundColor: '#ffffff'
                 },
                 jsPDF: {
                     unit: 'in',
