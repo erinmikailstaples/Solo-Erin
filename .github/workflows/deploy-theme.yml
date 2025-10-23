@@ -17,17 +17,34 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version: '18'
           cache: 'npm'
           
       - name: Install dependencies
         run: npm ci
+        
+      - name: Verify build environment
+        run: |
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          echo "Gulp version: $(npx gulp --version)"
         
       - name: Build theme assets
         run: npx gulp build
         
       - name: Create theme package
         run: npm run zip
+        
+      - name: Verify theme package
+        run: |
+          ls -la dist/
+          if [ -f "dist/solo-erin.zip" ]; then
+            echo "Theme package created successfully"
+            ls -lh dist/solo-erin.zip
+          else
+            echo "ERROR: Theme package not found"
+            exit 1
+          fi
         
       - name: Deploy Ghost Theme
         uses: TryGhost/action-deploy-theme@v1
