@@ -485,76 +485,103 @@
   }
 }
 
-/* PDF-specific styles for html2pdf - READABLE COMPACT */
+/* PDF-specific styles for html2pdf - STANDARD RESUME */
 .pdf-content .resume {
-  padding: 15px 20px;
+  padding: 20px 25px;
   max-width: none;
-  font-size: 9px;
+  font-size: 11px;
   background: white;
-  line-height: 1.2;
+  line-height: 1.4;
   margin: 0;
+  font-family: Arial, sans-serif;
 }
 
+/* Header Section - Standard Resume */
 .pdf-content .resume-name {
-  font-size: 1.4rem !important;
-  margin-bottom: 0.2rem;
-  line-height: 1.1;
+  font-size: 18px !important;
+  font-weight: bold;
+  margin-bottom: 4px;
+  line-height: 1.2;
 }
 
 .pdf-content .resume-pronouns {
-  font-size: 0.8rem !important;
+  font-size: 11px !important;
+  font-weight: normal;
 }
 
 .pdf-content .resume-title {
-  font-size: 1rem !important;
-  margin-bottom: 0.2rem;
+  font-size: 14px !important;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #333;
 }
 
 .pdf-content .resume-location {
-  font-size: 0.8rem !important;
-  margin-bottom: 0.3rem;
+  font-size: 11px !important;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.pdf-content .resume-contact {
+  margin-bottom: 12px;
 }
 
 .pdf-content .resume-contact a {
-  font-size: 0.7rem !important;
-  margin-right: 0.8rem;
+  font-size: 10px !important;
+  margin-right: 12px;
   display: inline-block;
+  color: #0066cc;
+  text-decoration: none;
 }
 
+/* Section Headers - Standard Resume */
 .pdf-content .resume-section > h2 {
-  font-size: 1rem !important;
-  margin: 0.5rem 0 0.3rem 0;
+  font-size: 13px !important;
+  font-weight: bold;
+  margin: 12px 0 6px 0;
   page-break-after: avoid;
   border-bottom: 1px solid #333;
-  padding-bottom: 0.1rem;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .pdf-content .resume-section p {
-  font-size: 0.8rem !important;
-  line-height: 1.3;
-  margin-bottom: 0.3rem;
+  font-size: 11px !important;
+  line-height: 1.4;
+  margin-bottom: 8px;
 }
 
 .pdf-content .resume-role {
   page-break-inside: avoid;
-  margin: 0.4rem 0;
+  margin: 8px 0;
 }
 
+/* Experience Section - Standard Resume */
 .pdf-content .resume-experience h3 {
-  font-size: 0.85rem !important;
-  margin-bottom: 0.2rem;
+  font-size: 12px !important;
+  font-weight: bold;
+  margin-bottom: 2px;
 }
 
 .pdf-content .resume-experience .meta {
-  font-size: 0.75rem !important;
-  margin-bottom: 0.3rem;
+  font-size: 10px !important;
+  margin-bottom: 4px;
+  color: #666;
+  font-style: italic;
 }
 
 .pdf-content .resume-experience li,
 .pdf-content .resume-list li {
-  font-size: 0.75rem !important;
-  line-height: 1.2;
-  margin-bottom: 0.2rem;
+  font-size: 10px !important;
+  line-height: 1.3;
+  margin-bottom: 3px;
+  padding-left: 8px;
+}
+
+.pdf-content .resume-experience li:before {
+  content: "• ";
+  margin-left: -8px;
 }
 
 .pdf-content #skills ul {
@@ -567,21 +594,21 @@
   column-gap: 1.5rem;
 }
 
-/* PDF-specific details styling - READABLE COMPACT */
+/* Job Details - Standard Resume */
 .pdf-content details {
-  margin: 0.3rem 0;
+  margin: 6px 0;
   border: none;
   padding: 0;
   page-break-inside: avoid;
 }
 
 .pdf-content summary {
-  font-size: 0.8rem !important;
-  font-weight: 600;
-  margin-bottom: 0.2rem;
+  font-size: 11px !important;
+  font-weight: bold;
+  margin-bottom: 2px;
   cursor: default;
   list-style: none;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .pdf-content summary::before {
@@ -589,21 +616,21 @@
 }
 
 .pdf-content .job-summary {
-  font-size: 0.7rem !important;
+  font-size: 10px !important;
   color: #666;
   font-style: italic;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  line-height: 1.2;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  line-height: 1.3;
 }
 
 .pdf-content .job-details {
-  margin-top: 0.3rem;
+  margin-top: 4px;
 }
 
 .pdf-content .job-details ul {
-  margin: 0.2rem 0;
-  padding-left: 0.8rem;
+  margin: 2px 0;
+  padding-left: 12px;
 }
 
 /* Ensure all content is visible in PDF */
@@ -617,32 +644,32 @@
   box-sizing: border-box;
 }
 
-/* Readable compact two-column layouts for skills */
+/* Skills Section - Standard Resume */
 .pdf-content .resume-list.two-col {
   columns: 2;
-  column-gap: 1rem;
-  font-size: 0.75rem !important;
+  column-gap: 20px;
+  font-size: 10px !important;
 }
 
-/* Ensure all sections are included - READABLE COMPACT */
+/* Section Spacing - Standard Resume */
 .pdf-content .resume-section {
-  margin-bottom: 0.3rem;
+  margin-bottom: 8px;
 }
 
-/* Readable compact role headers */
+/* Role Headers - Standard Resume */
 .pdf-content .role-header h3 {
-  font-size: 0.8rem !important;
-  margin-bottom: 0.1rem;
+  font-size: 11px !important;
+  margin-bottom: 2px;
 }
 
 .pdf-content .role-title-dates {
-  font-size: 0.7rem !important;
-  margin-bottom: 0.2rem;
+  font-size: 10px !important;
+  margin-bottom: 4px;
 }
 
-/* Readable compact skills section */
+/* Skills Section - Standard Resume */
 .pdf-content #skills ul {
   columns: 2;
-  column-gap: 1rem;
-  font-size: 0.75rem !important;
+  column-gap: 20px;
+  font-size: 10px !important;
 }

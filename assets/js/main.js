@@ -175,13 +175,13 @@ function initParallax() {
             const contentHeight = element.scrollHeight;
             const contentWidth = element.scrollWidth;
             
-            // Balanced PDF options for readability and single page
+            // Standard Resume PDF options
             const opt = {
-                margin: [0.3, 0.3, 0.3, 0.3], // Moderate margins
+                margin: [0.5, 0.5, 0.5, 0.5], // Standard resume margins
                 filename: 'Erin_Mikail_Staples_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.95 },
+                image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
-                    scale: 1.8, // Higher scale for better readability
+                    scale: 2.0, // High quality for professional appearance
                     useCORS: true,
                     allowTaint: true,
                     letterRendering: true,
@@ -203,7 +203,7 @@ function initParallax() {
                 pagebreak: {
                     mode: ['avoid-all', 'css'],
                     before: '.resume-section',
-                    avoid: '.resume-role'
+                    avoid: ['.resume-role', '.resume-experience']
                 }
             };
             
