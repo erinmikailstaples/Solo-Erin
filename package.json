@@ -1,7 +1,7 @@
 {
     "name": "solo-erin",
     "description": "A Ghost theme",
-    "version": "1.0.47",
+    "version": "1.0.48",
     "private": true,
     "engines": {
         "ghost": ">=5.0.0"
