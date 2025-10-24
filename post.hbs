@@ -45,9 +45,12 @@
                             </div>
                             {{#if tags}}
                                 <div class="gh-article-tags">
-                                    {{#foreach tags}}
-                                        <a class="gh-article-tag" href="{{url}}" style="--tag-color: {{accent_color}}">{{name}}</a>
-                                    {{/foreach}}
+                                    <div class="gh-article-tags-label">Article tags:</div>
+                                    <div class="gh-article-tags-list">
+                                        {{#foreach tags}}
+                                            <a class="gh-article-tag" href="{{url}}" style="--tag-color: {{accent_color}}">{{name}}</a>
+                                        {{/foreach}}
+                                    </div>
                                 </div>
                             {{/if}}
                         </div>
