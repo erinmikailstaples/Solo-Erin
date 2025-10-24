@@ -344,6 +344,42 @@ hr {
     justify-content: center;
 }
 
+/* Consistent image sizing for all layouts */
+.gh-card-image img,
+.gh-article-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effects for better UX */
+.gh-card-link:hover .gh-card-image img {
+    transform: scale(1.02);
+}
+
+/* Ensure consistent aspect ratios for card images */
+.gh-card-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.gh-card-image::before {
+    display: block;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    content: "";
+}
+
+.gh-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .gh-card-title {
     font-weight: 800;
     word-break: break-word;
@@ -427,11 +463,13 @@ hr {
 .has-classic-feed .gh-card-image {
     position: relative;
     flex: 1;
+    position: relative;
+    overflow: hidden;
 }
 
 .has-classic-feed .gh-card-image::before {
     display: block;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
     content: "";
 }
 
@@ -441,7 +479,8 @@ hr {
 
 .has-classic-feed .gh-card-image img {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -551,6 +590,12 @@ hr {
     z-index: -1;
     width: 100%;
     height: 100%;
+}
+
+.has-parallax-feed .gh-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .has-parallax-feed .gh-card-wrapper {
@@ -713,10 +758,11 @@ hr {
 /* Make article tags more clearly associated with the article */
 .gh-article-tags {
     background: rgba(var(--color-primary-rgb), 0.05);
-    padding: 12px 16px;
+    padding: 16px 20px;
     border-radius: 8px;
-    margin-top: 16px;
+    margin: 24px 0;
     border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    border-top: 2px solid var(--color-primary);
 }
 
 .gh-article-tags-label {
@@ -766,6 +812,28 @@ hr {
 .gh-article-tag.hide-all-posts,
 .gh-card-tag.hide-all-posts {
     display: none !important;
+}
+
+/* Responsive image sizing */
+@media (max-width: 768px) {
+    .gh-card-image::before,
+    .gh-article-image::before {
+        padding-bottom: 62.5%; /* Slightly taller aspect ratio on mobile */
+    }
+}
+
+/* Handle images without proper dimensions */
+.gh-card-image img[width][height],
+.gh-article-image img[width][height] {
+    aspect-ratio: attr(width) / attr(height);
+}
+
+/* Fallback for very small screens */
+@media (max-width: 480px) {
+    .gh-card-image::before,
+    .gh-article-image::before {
+        padding-bottom: 75%; /* Even taller on very small screens */
+    }
 }
 
 /* Responsive tag styling */
@@ -849,6 +917,23 @@ hr {
 .gh-article-image {
     grid-column: 1 / span 12;
     margin-top: clamp(4rem, 3rem + 3.125vw, 8rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.gh-article-image::before {
+    display: block;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    content: "";
+}
+
+.gh-article-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .gh-content {

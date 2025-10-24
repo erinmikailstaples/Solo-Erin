@@ -43,19 +43,20 @@
                                 </div>
                                 <time class="gh-article-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
                             </div>
-                            {{#if tags}}
-                                <div class="gh-article-tags">
-                                    <div class="gh-article-tags-label">Article tags:</div>
-                                    <div class="gh-article-tags-list">
-                                        {{#foreach tags}}
-                                            <a class="gh-article-tag" href="{{url}}" style="--tag-color: {{accent_color}}">{{name}}</a>
-                                        {{/foreach}}
-                                    </div>
-                                </div>
-                            {{/if}}
                         </div>
                     </aside>
                 </section>
+
+                {{#if tags}}
+                    <div class="gh-article-tags gh-canvas">
+                        <div class="gh-article-tags-label">Article tags:</div>
+                        <div class="gh-article-tags-list">
+                            {{#foreach tags}}
+                                <a class="gh-article-tag" href="{{url}}" style="--tag-color: {{accent_color}}">{{name}}</a>
+                            {{/foreach}}
+                        </div>
+                    </div>
+                {{/if}}
 
                 {{#if comments}}
                     <div class="gh-comments gh-canvas">
