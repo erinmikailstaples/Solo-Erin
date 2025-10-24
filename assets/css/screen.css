@@ -696,7 +696,10 @@ hr {
 .gh-card-tags {
     margin-top: 0;
     margin-bottom: 16px;
-    padding-top: 0;
+    padding: 8px 12px;
+    background: rgba(var(--color-primary-rgb), 0.03);
+    border-radius: 6px;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.08);
     border-top: none;
 }
 
@@ -729,6 +732,22 @@ hr {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+}
+
+/* Card tag labels and layout */
+.gh-card-tags-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-secondary-text);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.gh-card-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .gh-card-tags .gh-card-tag {
