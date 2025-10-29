@@ -36,7 +36,8 @@ body {
 
 figcaption {
     font-size: 1.3rem;
-    text-align: right;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .kg-width-full figcaption {
@@ -875,7 +876,7 @@ hr {
     grid-row-start: 1;
     grid-column: 4 / span 9;
     margin-top: 0;
-    margin-bottom: clamp(4.8rem, 1.43vw + 4.11rem, 6.4rem);
+    margin-bottom: clamp(2rem, 1.5rem + 1.5vw, 3.5rem);
 }
 
 .gh-article-title {
@@ -916,7 +917,7 @@ hr {
 
 .gh-article-image {
     grid-column: 1 / span 12;
-    margin-top: clamp(4rem, 3rem + 3.125vw, 8rem);
+    margin-top: clamp(2rem, 1.5rem + 1.5vw, 4rem);
     position: relative;
     overflow: hidden;
 }
@@ -937,19 +938,61 @@ hr {
 }
 
 .gh-content {
-    --content-spacing-multiplier: 1.5;
+    --content-spacing-multiplier: 1.2;
 
     position: relative;
-    margin-top: clamp(4rem, 3rem + 3.125vw, 8rem);
+    margin-top: clamp(2rem, 1.5rem + 1.5vw, 4rem);
     line-height: 1.7;
 }
 
 :is(.post-template, .page-template) .no-image .gh-content {
-    margin-top: clamp(4rem, 2.14vw + 2.97rem, 6.4rem);
+    margin-top: clamp(2rem, 1.5rem + 1.5vw, 3.5rem);
 }
 
 .gh-content > [id] {
     font-weight: 800;
+}
+
+/* Center images within content */
+.gh-content img {
+    display: block;
+    margin: 2rem auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Center images in kg-width-full containers */
+.kg-width-full img {
+    display: block;
+    margin: 2rem auto;
+    border-radius: 8px;
+}
+
+/* Center images in kg-width-wide containers */
+.kg-width-wide img {
+    display: block;
+    margin: 2rem auto;
+    border-radius: 8px;
+}
+
+/* Center figure elements and their captions */
+.gh-content figure {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.gh-content figure img {
+    margin: 0 auto 1rem auto;
+}
+
+/* Reduce spacing for better visual balance */
+.gh-content p {
+    margin-bottom: 1.5rem;
+}
+
+.gh-content p:last-child {
+    margin-bottom: 0;
 }
 
 .has-serif-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content > :is([id], p, ul, ol) {
@@ -961,7 +1004,7 @@ hr {
 }
 
 .gh-article-footer {
-    margin-top: clamp(6.4rem, 3rem + 10.625vw, 20rem);
+    margin-top: clamp(3rem, 2rem + 3vw, 6rem);
 }
 
 @media (min-width: 992px) {
