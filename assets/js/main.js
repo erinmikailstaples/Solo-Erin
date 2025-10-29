@@ -77,169 +77,32 @@ function initParallax() {
     });
 })();
 
-// Resume PDF generation functionality
+// Resume PDF download functionality
 (function () {
     const pdfButton = document.getElementById('download-pdf');
     if (!pdfButton) return;
     
-    let isGenerating = false;
-    
-    function showLoading() {
-        isGenerating = true;
-        pdfButton.disabled = true;
-        const buttonText = pdfButton.querySelector('.button-text');
-        const icon = pdfButton.querySelector('.pdf-icon');
+    function downloadPDF() {
+        // Create a link element to download the static PDF
+        const link = document.createElement('a');
+        link.href = '/partials/assets/2025-10-29-Erin_Mikail_Staples_Resume.pdf';
+        link.download = 'Erin_Mikail_Staples_Resume.pdf';
+        link.target = '_blank';
         
-        if (buttonText) buttonText.textContent = 'Generating...';
-        if (icon) {
-            icon.style.display = 'none';
-            const spinner = document.createElement('div');
-            spinner.className = 'loading-spinner';
-            pdfButton.insertBefore(spinner, buttonText);
-        }
-    }
-    
-    function hideLoading() {
-        isGenerating = false;
-        pdfButton.disabled = false;
-        const buttonText = pdfButton.querySelector('.button-text');
-        const icon = pdfButton.querySelector('.pdf-icon');
-        const spinner = pdfButton.querySelector('.loading-spinner');
-        
-        if (buttonText) buttonText.textContent = 'Download PDF';
-        if (icon) icon.style.display = 'block';
-        if (spinner) spinner.remove();
-    }
-    
-    function showError(message) {
-        hideLoading();
-        // Simple error handling - could be enhanced with toast notifications
-        alert('PDF generation failed: ' + (message || 'Unknown error'));
-    }
-    
-    function generatePDF() {
-        if (isGenerating) return;
-        
-        // Check if html2pdf is available
-        if (!window.html2pdf) {
-            showError('PDF library not loaded. Please refresh the page and try again.');
-            return;
-        }
-        
-        showLoading();
-        
-        try {
-            const element = document.getElementById('resume-content');
-            if (!element) {
-                throw new Error('Resume content not found');
-            }
-            
-            console.log('Starting PDF generation...');
-            
-            // Clone the element to avoid modifying the original
-            const clone = element.cloneNode(true);
-            
-            // Add PDF-specific class for styling
-            clone.classList.add('pdf-content');
-            
-            // Hide elements that shouldn't appear in PDF
-            const elementsToHide = clone.querySelectorAll('.resume-nav, .gh-head, .gh-foot, .resume-pdf-button');
-            elementsToHide.forEach(el => el.style.display = 'none');
-            
-            // Expand all details elements for PDF
-            const detailsElements = clone.querySelectorAll('details');
-            detailsElements.forEach(details => {
-                details.open = true;
-                // Also hide the summary arrows in PDF
-                const summary = details.querySelector('summary');
-                if (summary) {
-                    summary.style.listStyle = 'none';
-                    summary.style.position = 'relative';
-                }
-            });
-            
-            // Simplified approach - just ensure content is visible
-            clone.style.overflow = 'visible';
-            clone.style.height = 'auto';
-            clone.style.maxHeight = 'none';
-            
-            // Force all sections to be visible
-            const sections = clone.querySelectorAll('.resume-section');
-            sections.forEach(section => {
-                section.style.display = 'block';
-                section.style.visibility = 'visible';
-            });
-            
-            // Get the actual dimensions of the content
-            const contentRect = element.getBoundingClientRect();
-            const contentHeight = element.scrollHeight;
-            const contentWidth = element.scrollWidth;
-            
-            // Standard Resume PDF options
-            const opt = {
-                margin: [0.5, 0.5, 0.5, 0.5], // Standard resume margins
-                filename: 'Erin_Mikail_Staples_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: {
-                    scale: 2.0, // High quality for professional appearance
-                    useCORS: true,
-                    allowTaint: true,
-                    letterRendering: true,
-                    logging: false,
-                    width: contentWidth,
-                    height: contentHeight,
-                    scrollX: 0,
-                    scrollY: 0,
-                    windowWidth: contentWidth,
-                    windowHeight: contentHeight,
-                    backgroundColor: '#ffffff'
-                },
-                jsPDF: {
-                    unit: 'in',
-                    format: 'letter',
-                    orientation: 'portrait',
-                    compressPDF: true
-                },
-                pagebreak: {
-                    mode: ['avoid-all', 'css'],
-                    before: '.resume-section',
-                    avoid: ['.resume-role', '.resume-experience']
-                }
-            };
-            
-            // Generate PDF
-            console.log('Generating PDF with options:', opt);
-            console.log('Clone element:', clone);
-            console.log('Clone dimensions:', clone.scrollWidth, 'x', clone.scrollHeight);
-            
-            html2pdf()
-                .set(opt)
-                .from(clone)
-                .save()
-                .then(() => {
-                    console.log('PDF generated successfully');
-                    hideLoading();
-                })
-                .catch(error => {
-                    console.error('PDF generation error:', error);
-                    console.error('Error details:', error);
-                    showError('PDF generation failed: ' + (error.message || 'Unknown error'));
-                });
-                
-        } catch (error) {
-            console.error('PDF generation error:', error);
-            showError(error.message);
-        }
+        // Trigger the download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
     
     // Add click event listener
-    pdfButton.addEventListener('click', generatePDF);
+    pdfButton.addEventListener('click', downloadPDF);
     
     // Add keyboard support
     pdfButton.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            generatePDF();
+            downloadPDF();
         }
     });
 })();
