@@ -85,8 +85,8 @@ function initParallax() {
     function downloadPDF() {
         // Create a link element to download the static PDF from GitHub
         const link = document.createElement('a');
-        link.href = 'https://raw.githubusercontent.com/erinmikailstaples/Solo-Erin/main/partials/%20%20assets/2025-10-29-Erin_Mikail_Staples_Resume.pdf';
-        link.download = 'Erin_Mikail_Staples_Resume.pdf';
+        link.href = 'https://raw.githubusercontent.com/erinmikailstaples/Solo-Erin/main/partials/%20%20assets/2025-10-30-Erin-Mikail-Staples.pdf';
+        link.download = 'Erin-Mikail-Staples.pdf';
         link.target = '_blank';
         
         // Trigger the download
