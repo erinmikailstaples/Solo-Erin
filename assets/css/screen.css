@@ -365,6 +365,8 @@ hr {
     position: relative;
     overflow: hidden;
     border-radius: 14px; /* ensure consistent rounded corners on index cards */
+    aspect-ratio: 16 / 9;
+    display: block;
 }
 
 .gh-card-image::before {
@@ -381,6 +383,14 @@ hr {
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+/* Keep author avatars circular and unaffected by generic image rules */
+.gh-author-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .gh-card-title {
@@ -874,6 +884,7 @@ hr {
     .gh-feed .gh-card-image::before {
         padding-bottom: 66.66%;
     }
+    .gh-feed .gh-card-image { aspect-ratio: 3 / 2; }
 
     /* Normalize layout across feed variants on mobile */
     .gh-feed .gh-card-link {
