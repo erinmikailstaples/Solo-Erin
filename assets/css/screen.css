@@ -837,6 +837,54 @@ hr {
     }
 }
 
+/* Homepage/mobile responsiveness tweaks */
+@media (max-width: 991px) {
+    /* Tighten gaps between title and image in the feed */
+    .has-classic-feed .gh-card-link {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Scale down oversized homepage titles for better fit */
+    .gh-card-title {
+        font-size: clamp(2.4rem, 1.4rem + 2.5vw, 3.2rem);
+        line-height: 1.15;
+    }
+
+    /* Keep excerpts readable and compact */
+    .has-typographic-feed .gh-card-excerpt {
+        font-size: 1.6rem;
+        line-height: 1.45;
+    }
+
+    /* Prevent large tag blocks from stretching the layout */
+    .gh-card-tags {
+        padding: 6px 10px;
+        gap: 6px;
+    }
+
+    /* Make sure images remain full-bleed while not overflowing the canvas */
+    .gh-card-image::before {
+        padding-bottom: 66.66%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra compact layout on very small screens */
+    .gh-card-title {
+        font-size: clamp(2.2rem, 1.2rem + 2.5vw, 2.8rem);
+    }
+
+    .has-classic-feed .gh-card-link {
+        gap: 16px;
+    }
+
+    .gh-card-tags .gh-card-tag {
+        font-size: 1.1rem;
+    }
+}
+
 /* Responsive tag styling */
 @media (max-width: 768px) {
     .gh-article-tags,
