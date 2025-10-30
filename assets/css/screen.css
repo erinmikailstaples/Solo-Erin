@@ -865,8 +865,17 @@ hr {
     }
 
     /* Make sure images remain full-bleed while not overflowing the canvas */
-    .gh-card-image::before {
+    .gh-feed .gh-card-image {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .gh-feed .gh-card-image::before {
         padding-bottom: 66.66%;
+    }
+
+    /* Normalize layout across feed variants on mobile */
+    .gh-feed .gh-card-link {
+        display: block;
     }
 }
 
