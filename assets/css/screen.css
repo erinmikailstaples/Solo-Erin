@@ -346,12 +346,16 @@ hr {
 }
 
 /* Consistent image sizing for all layouts */
-.gh-card-image img,
 .gh-article-image img {
     width: 100%;
     height: auto;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Card images are handled separately with aspect-ratio containers */
+.gh-card-image img {
     transition: transform 0.3s ease;
 }
 
@@ -370,8 +374,8 @@ hr {
 }
 
 .gh-card-image::before {
-    display: block;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio for index featured images */
+    display: none; /* Disabled when using modern aspect-ratio property */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio - fallback for older browsers */
     content: "";
 }
 
@@ -476,13 +480,14 @@ hr {
 .has-classic-feed .gh-card-image {
     position: relative;
     flex: 1;
-    position: relative;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
 }
 
 .has-classic-feed .gh-card-image::before {
-    display: block;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    display: none; /* Disabled when using modern aspect-ratio */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio - fallback for older browsers */
     content: "";
 }
 
@@ -497,6 +502,7 @@ hr {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .has-classic-feed .gh-card-wrapper {
