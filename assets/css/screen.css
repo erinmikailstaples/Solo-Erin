@@ -473,7 +473,7 @@ hr {
 
 .has-classic-feed .gh-card-link {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     gap: clamp(4rem, 3rem + 3.125vw, 8rem);
 }
 
