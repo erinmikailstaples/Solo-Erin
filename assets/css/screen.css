@@ -389,12 +389,20 @@ hr {
     object-position: center;
 }
 
-/* Keep author avatars circular and unaffected by generic image rules */
+/* Author profile images - simplified and consolidated */
+/* Container handles circular shape with overflow clipping */
+.gh-author-image {
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
 .gh-author-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    display: block;
+    margin: 0; /* Override content image margins */
 }
 
 .gh-card-title {
@@ -674,7 +682,6 @@ hr {
 }
 
 .gh-article-meta .gh-author-image {
-    display: block;
     width: 72px;
     height: 72px;
     margin-bottom: 0;
@@ -1029,7 +1036,7 @@ hr {
     font-weight: 800;
 }
 
-/* Center images within content */
+/* Center images within content (excluding author profile images) */
 .gh-content img {
     display: block;
     margin: 2rem auto;
@@ -1037,6 +1044,7 @@ hr {
     height: auto;
     border-radius: 8px;
 }
+
 
 /* Center images in kg-width-full containers */
 .kg-width-full img {
@@ -1282,18 +1290,11 @@ hr {
     margin-bottom: 80px;
 }
 
-.gh-author-image {
+/* Author page profile images use the base .gh-author-image styles above */
+:is(.tag-template, .author-template) .gh-author-image {
     width: 96px;
     height: 96px;
     margin-bottom: 24px;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.gh-author-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .gh-author-meta {
