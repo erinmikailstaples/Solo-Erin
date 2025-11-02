@@ -389,19 +389,16 @@ hr {
     object-position: center;
 }
 
-/* Author profile images - simplified and consolidated */
-/* Container handles circular shape with overflow clipping */
+/* Author profile images - no cropping, full image visible */
 .gh-author-image {
     display: block;
-    overflow: hidden;
-    border-radius: 50%;
 }
 
 .gh-author-image img {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
+    object-fit: contain; /* Shows full image without cropping */
     margin: 0; /* Override content image margins */
 }
 
